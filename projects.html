@@ -7,18 +7,34 @@
 <meta name="description" content="Explore Divine Interiors latest workplace design, corporate office fitouts, and commercial retail turnkey projects delivered across India.">
 <link rel="icon" type="image/png" href="./assets/divine-favicon-apple.png">
 
+<script>
+  /* Once-per-session preloader gate */
+  document.documentElement.classList.add("rs-js");
+  (function(){
+    try {
+      if (sessionStorage.getItem("rsPreloaderSeen")) {
+        document.documentElement.classList.add("rs-preloader-seen");
+      } else {
+        sessionStorage.setItem("rsPreloaderSeen", "1");
+      }
+    } catch(e) {}
+  })();
+</script>
+
 <style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 <link rel="stylesheet" id="rs-main-css-0-css" href="./dist/assets/css/style-DEtV23hX.css" media="all" />
 
 <style>
-  /* Header logo styles for Divine Interiors */
+  /* Divine Interiors Header Logo System */
   .header-ronn__logo img {
     height: 38px;
     width: auto;
+    max-width: 180px;
     object-fit: contain;
     display: block;
+    transition: filter 0.3s ease;
   }
   @media (max-width: 47.99em) {
     .header-ronn__logo img {
@@ -26,58 +42,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     }
   }
   .header-ronn__logo {
-    opacity: 1 !important;
-    visibility: visible !important;
     display: flex !important;
     align-items: center !important;
   }
-  .header-ronn__logo img {
-    height: 38px !important;
-    width: auto !important;
-    max-width: 180px !important;
-    object-fit: contain !important;
-    display: block !important;
-    filter: none !important;
-  }
   .header-ronn--light .header-ronn__logo img {
-    filter: none !important;
+    filter: none;
   }
   .header-ronn--dark-sable .header-ronn__logo img,
   .header-ronn--dark-parme .header-ronn__logo img {
-    filter: brightness(0) invert(1) !important;
+    filter: brightness(0) invert(1);
   }
-  /* Ensure hero heading and totem in projects page are visible and styled */
-  .block-6-1-hero {
-    overflow: visible !important;
-  }
-  .block-6-1-hero__heading,
-  .block-6-1-hero__description,
-  .block-6-1-hero__totem {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  .header-ronn__cta-bar {
-    display: none !important;
-  }
-  .header-ronn__nav {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  .header-ronn__actions {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  @media (min-width: 48em) {
-    .header-ronn__menu,
-    .header-ronn__menu-footer {
-      display: none !important;
-    }
-  }
-  @media (max-width: 47.99em) {
-    .header-ronn__menu:not(.is-open) {
-      display: none !important;
-    }
-  }
+
   /* Transition logo custom sizing */
   .transition__logo img,
   .transition__logo svg {
@@ -86,15 +61,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     display: block;
     filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
   }
+
+  /* Reviews avatar badge styling for transparent logos */
+  .block-1-9-card-reviews__author-avatar {
+    object-fit: contain !important;
+    background: #ffffff !important;
+    padding: 6px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(35, 24, 0, 0.12) !important;
+    box-shadow: 0 2px 10px rgba(35, 24, 0, 0.06);
+  }
 </style>
 </head>
 <body class="wp-singular page-template-default page page-id-829 wp-theme-divine-interiors">
 
-<div id="site-loader" style="position:fixed;inset:0;z-index:210;background:#DBB6FC;pointer-events:none;" aria-hidden="true"></div>
-
-<div class="brand-clone" data-brand-clone aria-hidden="true" style="visibility:hidden;opacity:0;">
-  <img src="./assets/divine-logo-dark.png" alt="Divine Interiors" style="height:48px;width:auto;" />
-</div>
+<div id="site-loader" style="position:fixed;inset:0;z-index:210;background:transparent;pointer-events:none;" aria-hidden="true"></div>
 
 <div class="site-bg" aria-hidden="true">
   <div class="site-bg__base"></div>
@@ -127,7 +108,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   </div>
 
   <div class="header-ronn__main">
-    <a class="header-ronn__logo" href="./index.html" aria-label="Divine Interiors - Home" style="display:flex;align-items:center;">
+    <a class="header-ronn__logo" href="./index.html" aria-label="Divine Interiors - Home">
       <img src="./assets/divine-logo-dark.png" alt="Divine Interiors" />
     </a>
 
@@ -177,120 +158,49 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       </a>
 
       <button class="header-ronn__hamburger" type="button" aria-expanded="false" aria-controls="header-menu-panel" aria-label="Open menu" data-header-ronn-toggle>
-        <span class="header-ronn__hamburger-box" aria-hidden="true">
-          <span class="header-ronn__hamburger-line header-ronn__hamburger-line--top"></span>
-          <span class="header-ronn__hamburger-line header-ronn__hamburger-line--bottom"></span>
-        </span>
+        <svg class="header-ronn__hamburger-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line class="header-ronn__hamburger-line header-ronn__hamburger-line--top" x1="2" y1="8" x2="22" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line class="header-ronn__hamburger-line header-ronn__hamburger-line--bottom" x1="2" y1="16" x2="22" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
   </div>
 
-  <div class="header-ronn__breadcrumb" data-header-ronn-breadcrumb>
-    <nav class="header-ronn__breadcrumb-nav" aria-label="Breadcrumb">
-      <div class="header-ronn__breadcrumb-track" data-header-ronn-breadcrumb-track>
-        <a href="./index.html" class="header-ronn__breadcrumb-link header-ronn__breadcrumb-link--inactive">Home</a>
-        <span class="header-ronn__breadcrumb-sep">/</span>
-        <span class="header-ronn__breadcrumb-link" aria-current="page">Projects</span>
-      </div>
-    </nav>
-  </div>
+  <nav class="header-ronn__breadcrumb" aria-label="Breadcrumb">
+    <div class="header-ronn__breadcrumb-track">
+      <a href="./index.html" class="header-ronn__breadcrumb-link header-ronn__breadcrumb-link--inactive">Home</a>
+      <span class="header-ronn__breadcrumb-sep">/</span>
+      <span class="header-ronn__breadcrumb-link" aria-current="page">Projects</span>
+    </div>
+  </nav>
 
-  <div
-    class="header-ronn__menu"
-    id="header-menu-panel"
-    data-header-ronn-menu
-    aria-hidden="true"
-    role="dialog"
-    aria-label="Navigation menu"
-    tabindex="-1"
-  >
+  <!-- Mobile Menu -->
+  <div class="header-ronn__menu" id="header-menu-panel" data-header-ronn-menu aria-hidden="true" role="dialog" aria-label="Navigation menu">
     <div class="header-ronn__menu-body">
       <a href="#contact" class="btn header-ronn__btn header-ronn__btn--solid header-ronn__btn--full header-ronn__btn--menu-top">
         <span class="btn__bg" aria-hidden="true"></span>
         <span class="btn__label">Contact Us</span>
       </a>
-
       <a href="./about.html" class="header-ronn__menu-link">About</a>
       <a href="./projects.html" class="header-ronn__menu-link is-active">Projects</a>
-      <div class="header-ronn__menu-group" data-header-ronn-accordion>
-        <div class="header-ronn__menu-link header-ronn__menu-link--parent">
-          <a href="./index.html#preoccupations" class="header-ronn__menu-parent-link">Sectors</a>
-          <button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-label="Open Sectors submenu">
-            <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="header-ronn__menu-sub" hidden>
-          <div class="header-ronn__menu-sub-inner">
-            <a href="./index.html#preoccupations" class="header-ronn__menu-sub-link">Commercial &amp; Retail Fitouts</a>
-            <a href="./index.html#preoccupations" class="header-ronn__menu-sub-link">Bespoke Turnkey Projects</a>
-            <a href="./index.html#preoccupations" class="header-ronn__menu-sub-link">Corporate Workplaces</a>
-            <a href="./index.html#preoccupations" class="header-ronn__menu-sub-link">Hospitality &amp; Dining Spaces</a>
-          </div>
-        </div>
-      </div>
-      <div class="header-ronn__menu-group" data-header-ronn-accordion>
-        <div class="header-ronn__menu-link header-ronn__menu-link--parent">
-          <a href="./index.html#expertises" class="header-ronn__menu-parent-link">Our Services</a>
-          <button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-label="Open Our Services submenu">
-            <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="header-ronn__menu-sub" hidden>
-          <div class="header-ronn__menu-sub-inner">
-            <a href="./index.html#expertises" class="header-ronn__menu-sub-link">Civil &amp; Interior Architecture</a>
-            <a href="./index.html#expertises" class="header-ronn__menu-sub-link">Facade &amp; Exterior Architecture</a>
-            <a href="./index.html#expertises" class="header-ronn__menu-sub-link">MEP &amp; Infrastructure</a>
-            <a href="./index.html#expertises" class="header-ronn__menu-sub-link">HVAC &amp; Climate Systems</a>
-          </div>
-        </div>
-      </div>
-      <a href="#reviews" class="header-ronn__menu-link">Client Reviews</a>
+      <a href="./index.html#preoccupations" class="header-ronn__menu-link">Sectors</a>
+      <a href="./index.html#expertises" class="header-ronn__menu-link">Our Services</a>
       <a href="#contact" class="header-ronn__menu-link">Contact</a>
-    </div>
-
-    <div class="header-ronn__menu-footer">
-      <div class="header-ronn__menu-cta">
-        <p class="header-ronn__menu-cta-text">Discover Divine Interiors!</p>
-        <a href="./about.html" class="btn header-ronn__menu-cta-btn" data-button-animate-chars>
-          <span class="btn__bg" aria-hidden="true"></span>
-          <span class="btn__label">About Us</span>
-        </a>
-      </div>
     </div>
   </div>
 </header>
 
 <div data-barba="wrapper">
-
 <main id="main-content" class="site-main" role="main" data-barba="container" data-barba-namespace="realisations" data-post-id="829" data-initial-bg="sable" data-nav-theme="light" data-nav-theme-scrolled="dark-sable" data-lang-urls="{&quot;en&quot;:&quot;./projects.html&quot;}" data-has-breadcrumb data-breadcrumbs="[{&quot;label&quot;:&quot;Home&quot;,&quot;url&quot;:&quot;./index.html&quot;},{&quot;label&quot;:&quot;Projects&quot;}]">
 
-  <!-- Block 6-1 Hero with swaying totem -->
-  <section class="block-6-1-hero block-6-1-hero--no-filters" data-block="block-6-1-hero" aria-label="Our Projects">
+  <!-- Block 6-1 Hero (Exact Ronn Square Layout with Totem Sculpture on Right) -->
+  <section class="block-6-1-hero block-6-1-hero--no-filters" data-block="block-6-1-hero" data-entrance="above-fold" aria-label="OurProjects">
     <div class="block-6-1-hero__text">
-      <h1 class="block-6-1-hero__heading anim-hidden" data-anim="title">OUR<br>PROJECTS</h1>
+      <h1 class="block-6-1-hero__heading anim-hidden" data-anim="title">Our<br>Projects</h1>
       <p class="block-6-1-hero__description anim-hidden" data-anim="description">Discover our latest workplace design and fit-out projects</p>
     </div>
     <div class="block-6-1-hero__totem block-6-1-hero__totem--desktop anim-hidden" data-anim="totem" aria-hidden="true">
-      <svg class="equilibre-totem" viewBox="-120 -30 524 641" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g class="equilibre-totem__sway" data-shape="sway">
-          <g class="equilibre-totem__diamond" data-shape="diamond">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M141.1.9L.9,143.2l142,140.4,140.1-142.2L141.1.9ZM142.5,219.2l-77.4-76.5,76.3-77.5,77.4,76.5-76.3,77.5Z" fill="currentColor"/>
-          </g>
-          <g class="equilibre-totem__circle" data-shape="circle">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M142.9,283.3c-72.2.5-130.5,59.7-130,131.9.5,72.3,59.6,130.7,131.7,130.2,72.2-.5,130.5-59.7,130-131.9-.5-72.3-59.6-130.7-131.7-130.2ZM144.3,500.7c-47.5.3-86.5-38.2-86.8-85.8-.3-47.6,38.1-86.6,85.6-86.9,47.5-.3,86.5,38.2,86.8,85.8.3,47.6-38.1,86.6-85.6,86.9Z" fill="currentColor"/>
-          </g>
-        </g>
-        <g class="equilibre-totem__triangle" data-shape="triangle">
-          <path d="M207.91 611L141.875 544.856L75.8398 611H207.91Z" fill="currentColor"/>
-        </g>
-      </svg>
-    </div>
-    <div class="block-6-1-hero__totem block-6-1-hero__totem--mobile anim-hidden" data-anim="totem" aria-hidden="true">
-      <svg class="equilibre-totem" viewBox="-120 -30 524 641" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="equilibre-totem" viewBox="0 0 284 611" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g class="equilibre-totem__sway" data-shape="sway">
           <g class="equilibre-totem__diamond" data-shape="diamond">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M141.1.9L.9,143.2l142,140.4,140.1-142.2L141.1.9ZM142.5,219.2l-77.4-76.5,76.3-77.5,77.4,76.5-76.3,77.5Z" fill="currentColor"/>
@@ -310,21 +220,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <section class="block-1-8-projects" data-block="block-1-8-projects" data-grid="mixed" aria-label="Our projects">
     <div class="block-1-8-projects__grid">
 
-      <!-- Card 1: Polo Ralph Lauren (Full) -->
+      <!-- Card 1: Polo Ralph Lauren (Full Width) -->
       <article class="block-1-8-projects__card block-1-8-projects__card--full anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
           <img width="1024" height="687" src="./assets/portfolio_new/polo-ralph-lauren_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Polo Ralph Lauren flagship by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
           <img width="1024" height="684" src="./assets/portfolio_new/polo-ralph-lauren_02.jpg" class="block-1-8-projects__image" alt="Polo Ralph Lauren luxury boutique design" data-slide="1" loading="lazy" decoding="async" />
           <img width="1024" height="678" src="./assets/portfolio_new/polo-ralph-lauren_03.jpg" class="block-1-8-projects__image" alt="Polo Ralph Lauren bespoke joinery and lighting" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/polo-ralph-lauren_04.jpg" class="block-1-8-projects__image" alt="Polo Ralph Lauren store facade and interior" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">POLO RALPH LAUREN</h2>
+          <h3 class="block-1-8-projects__company">POLO RALPH LAUREN</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Mall of India, Noida</p>
           </div>
@@ -337,24 +249,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 2: Domino's (Half) -->
+      <!-- Card 2: Domino's Saket (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
           <img width="1024" height="694" src="./assets/portfolio_new/dominos-saket_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Domino's Saket restaurant by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
           <img width="1024" height="684" src="./assets/portfolio_new/dominos-saket_02.jpg" class="block-1-8-projects__image" alt="Domino's dining space fitout" data-slide="1" loading="lazy" decoding="async" />
           <img width="1024" height="683" src="./assets/portfolio_new/dominos-saket_03.jpg" class="block-1-8-projects__image" alt="Domino's commercial kitchen and dining" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/dominos-saket_04.jpg" class="block-1-8-projects__image" alt="Domino's architectural finishes" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">DOMINO'S</h2>
+          <h3 class="block-1-8-projects__company">DOMINO'S</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Saket, New Delhi</p>
           </div>
@@ -367,24 +282,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 3: MANGO (Half) -->
+      <!-- Card 3: MANGO Mumbai (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
           <img width="1024" height="683" src="./assets/portfolio_new/mango-mumbai_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="MANGO flagship store by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
           <img width="1024" height="683" src="./assets/portfolio_new/mango-mumbai_02.jpg" class="block-1-8-projects__image" alt="MANGO luxury retail fitting" data-slide="1" loading="lazy" decoding="async" />
           <img width="1024" height="690" src="./assets/portfolio_new/mango-mumbai_03.jpg" class="block-1-8-projects__image" alt="MANGO modern storefront architecture" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/mango-mumbai_04.jpg" class="block-1-8-projects__image" alt="MANGO lighting and display systems" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">MANGO</h2>
+          <h3 class="block-1-8-projects__company">MANGO</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Phoenix Mall, Mumbai</p>
           </div>
@@ -397,24 +315,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 4: Godrej Interio (Full) -->
+      <!-- Card 4: Godrej Interio (Full Width) -->
       <article class="block-1-8-projects__card block-1-8-projects__card--full anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
           <img width="1024" height="687" src="./assets/projects/project_03_Hettich-Experience-Centre.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Godrej Interio experience centre delivered by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
           <img width="1024" height="684" src="./assets/projects/project_05_Somany-Atelier.jpg" class="block-1-8-projects__image" alt="Architectural showroom layout" data-slide="1" loading="lazy" decoding="async" />
           <img width="1024" height="678" src="./assets/projects/project_18_Hindware-Experience-Center-Delhi.jpg" class="block-1-8-projects__image" alt="Commercial experience studio" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_10_JSW-One-Homes.jpg" class="block-1-8-projects__image" alt="Turnkey retail and experience center" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">GODREJ INTERIO</h2>
+          <h3 class="block-1-8-projects__company">GODREJ INTERIO</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Experience Centre, Delhi NCR</p>
           </div>
@@ -427,24 +348,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 5: Aditya Birla Group / JSW (Half) -->
+      <!-- Card 5: Aditya Birla (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
-          <img width="1024" height="694" src="./assets/projects/project_10_JSW-One-Homes.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Aditya Birla executive hub" data-slide="0" loading="lazy" decoding="async" />
-          <img width="1024" height="684" src="./assets/projects/project_01_GoodGudi.jpg" class="block-1-8-projects__image" alt="Corporate office reception and lounge" data-slide="1" loading="lazy" decoding="async" />
-          <img width="1024" height="683" src="./assets/projects/project_02_Neerus-Vizag.jpg" class="block-1-8-projects__image" alt="Collaborative corporate workspaces" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="694" src="./assets/projects/project_08_Bagline-Retail-Design.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Aditya Birla corporate workplace by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
+          <img width="1024" height="684" src="./assets/projects/project_01_GoodGudi.jpg" class="block-1-8-projects__image" alt="Executive suites and boardrooms" data-slide="1" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_07_Home-Essentials-Retail-Store-Design.jpg" class="block-1-8-projects__image" alt="Modern collaborative workspaces" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_11_Red-Chief-Store-Design.jpg" class="block-1-8-projects__image" alt="Commercial interior execution" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">ADITYA BIRLA</h2>
+          <h3 class="block-1-8-projects__company">ADITYA BIRLA</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Corporate Hub, Mumbai</p>
           </div>
@@ -457,24 +381,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 6: PeopleStrong (Half) -->
+      <!-- Card 6: PeopleStrong (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
-          <img width="1024" height="683" src="./assets/projects/project_12_Mokobara-DLF-Cyber-City.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="PeopleStrong modern workplace at DLF Cyber City" data-slide="0" loading="lazy" decoding="async" />
-          <img width="1024" height="683" src="./assets/projects/project_13_Mokobara-Mumbai.jpg" class="block-1-8-projects__image" alt="Agile work zones and conference suites" data-slide="1" loading="lazy" decoding="async" />
-          <img width="1024" height="690" src="./assets/projects/project_15_plus-light-tech.jpg" class="block-1-8-projects__image" alt="Acoustic meeting pods and biophilic design" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_12_Mokobara-DLF-Cyber-City.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="PeopleStrong headquarters by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_13_Mokobara-Mumbai.jpg" class="block-1-8-projects__image" alt="Agile workstations and acoustic pods" data-slide="1" loading="lazy" decoding="async" />
+          <img width="1024" height="690" src="./assets/projects/project_20_DaMensch.jpg" class="block-1-8-projects__image" alt="Tech campus open work atmosphere" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/projects/project_21_Sleepyhead-Thumbnail.jpg" class="block-1-8-projects__image" alt="Modern conference and cafeteria" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">PEOPLESTRONG</h2>
+          <h3 class="block-1-8-projects__company">PEOPLESTRONG</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">DLF Cyber City, Gurugram</p>
           </div>
@@ -487,24 +414,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 7: Tim Hortons (Full) -->
+      <!-- Card 7: Tim Hortons (Full Width) -->
       <article class="block-1-8-projects__card block-1-8-projects__card--full anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
-          <img width="1024" height="687" src="./assets/projects/project_24_Tim-Hortons-Thumbnail.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Tim Hortons flagship roastery and cafe" data-slide="0" loading="lazy" decoding="async" />
-          <img width="1024" height="684" src="./assets/portfolio_new/roslyn-cafe_01.jpg" class="block-1-8-projects__image" alt="Tim Hortons warm timber seating architecture" data-slide="1" loading="lazy" decoding="async" />
-          <img width="1024" height="678" src="./assets/portfolio_new/roslyn-cafe_02.jpg" class="block-1-8-projects__image" alt="Tim Hortons bespoke coffee bar joinery" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="687" src="./assets/projects/project_24_Tim-Hortons-Thumbnail.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Tim Hortons flagship roastery by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
+          <img width="1024" height="684" src="./assets/portfolio_new/roslyn-cafe_01.jpg" class="block-1-8-projects__image" alt="Speciality cafe architectural fitout" data-slide="1" loading="lazy" decoding="async" />
+          <img width="1024" height="678" src="./assets/portfolio_new/roslyn-cafe_02.jpg" class="block-1-8-projects__image" alt="Warm lighting and bespoke wood counter" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/roslyn-cafe_03.jpg" class="block-1-8-projects__image" alt="Dining seating and custom terrazzo floors" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">TIM HORTONS</h2>
+          <h3 class="block-1-8-projects__company">TIM HORTONS</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Flagship Roastery, New Delhi</p>
           </div>
@@ -517,24 +447,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 8: M3M Luxury Residences (Half) -->
+      <!-- Card 8: M3M Luxury Residences (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
-          <img width="1024" height="694" src="./assets/portfolio_new/residence-m3m_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="M3M Golf Estate luxury residence fitout" data-slide="0" loading="lazy" decoding="async" />
-          <img width="1024" height="684" src="./assets/portfolio_new/residence-m3m_02.jpg" class="block-1-8-projects__image" alt="Bespoke Italian marble living space" data-slide="1" loading="lazy" decoding="async" />
-          <img width="1024" height="683" src="./assets/portfolio_new/residence-m3m_03.jpg" class="block-1-8-projects__image" alt="Private residence architectural ceilings" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="694" src="./assets/portfolio_new/residence-m3m_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="M3M luxury residence by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
+          <img width="1024" height="684" src="./assets/portfolio_new/residence-m3m_02.jpg" class="block-1-8-projects__image" alt="Architectural living lounge and custom marble" data-slide="1" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/residence-m3m_03.jpg" class="block-1-8-projects__image" alt="Master suite interior architecture" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/residence-m3m_04.jpg" class="block-1-8-projects__image" alt="Bespoke dressing room and lighting" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">M3M LUXURY RESIDENCES</h2>
+          <h3 class="block-1-8-projects__company">M3M LUXURY RESIDENCES</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Golf Course Ext. Road, Gurugram</p>
           </div>
@@ -547,24 +480,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
-      <!-- Card 9: Antony Morato (Half) -->
+      <!-- Card 9: Antony Morato (Half Width) -->
       <article class="block-1-8-projects__card anim-hidden" data-anim="card" data-has-slideshow>
         <div class="block-1-8-projects__slideshow" data-anim-img-inner>
-          <img width="1024" height="683" src="./assets/portfolio_new/antony-morato_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Antony Morato flagship boutique by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
-          <img width="1024" height="683" src="./assets/portfolio_new/antony-morato_02.jpg" class="block-1-8-projects__image" alt="Antony Morato architectural display" data-slide="1" loading="lazy" decoding="async" />
-          <img width="1024" height="681" src="./assets/portfolio_new/antony-morato_03.jpg" class="block-1-8-projects__image" alt="Antony Morato luxury retail fitting" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/antony-morato_01.jpg" class="block-1-8-projects__image block-1-8-projects__image--active" alt="Antony Morato flagship by Divine Interiors" data-slide="0" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/antony-morato_02.jpg" class="block-1-8-projects__image" alt="Antony Morato retail lighting and shelving" data-slide="1" loading="lazy" decoding="async" />
+          <img width="1024" height="690" src="./assets/portfolio_new/antony-morato_03.jpg" class="block-1-8-projects__image" alt="Antony Morato boutique facade" data-slide="2" loading="lazy" decoding="async" />
+          <img width="1024" height="683" src="./assets/portfolio_new/antony-morato_04.jpg" class="block-1-8-projects__image" alt="Antony Morato architectural display systems" data-slide="3" loading="lazy" decoding="async" />
           <div class="block-1-8-projects__gradient" aria-hidden="true"></div>
         </div>
         <div class="block-1-8-projects__zones" aria-hidden="true">
           <div class="block-1-8-projects__zone" data-slide-index="0"></div>
           <div class="block-1-8-projects__zone" data-slide-index="1"></div>
           <div class="block-1-8-projects__zone" data-slide-index="2"></div>
+          <div class="block-1-8-projects__zone" data-slide-index="3"></div>
         </div>
         <div class="block-1-8-projects__info">
-          <h2 class="block-1-8-projects__company">ANTONY MORATO</h2>
+          <h3 class="block-1-8-projects__company">ANTONY MORATO</h3>
           <div class="block-1-8-projects__details">
             <p class="block-1-8-projects__location">Luxury Retail Flagship</p>
           </div>
@@ -577,13 +513,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <span class="block-1-8-projects__bar" data-bar-index="0"></span>
           <span class="block-1-8-projects__bar" data-bar-index="1"></span>
           <span class="block-1-8-projects__bar" data-bar-index="2"></span>
+          <span class="block-1-8-projects__bar" data-bar-index="3"></span>
         </div>
       </article>
 
     </div>
+
+    <!-- Bottom CTA Bar -->
+    <div class="block-1-8-projects__cta block-1-8-projects__cta--show-more anim-hidden" data-anim="cta">
+      <p class="block-1-8-projects__counter">Viewed 9 of 9</p>
+      <a href="#contact" class="btn btn--maron btn--md block-1-8-projects__cta-btn" data-button-animate-chars>
+        <span class="btn__bg" aria-hidden="true"></span>
+        <span class="btn__label">Book a Project Consultation</span>
+      </a>
+    </div>
   </section>
 
-  <!-- Block 1-3 Quote with swaying totem on the left -->
+  <!-- Block 1-3 Quote with Swaying Totem on Left (Signature Ronn Square Component) -->
   <section class="block-1-3-quote block-1-3-quote--maron block-1-3-quote--totem-left block-1-3-quote--wiggle" data-block="block-1-3-quote">
     <div class="block-1-3-quote__pin-wrapper">
       <div class="block-1-3-quote__content">
@@ -591,6 +537,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           Our best project isn’t online yet—maybe it will be yours.
         </p>
       </div>
+
       <div class="block-1-3-quote__totem" data-anim="totem">
         <svg class="equilibre-totem" viewBox="0 0 284 611" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <g class="equilibre-totem__sway" data-shape="sway">
@@ -609,121 +556,223 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     </div>
   </section>
 
-  <!-- Block 1-9 Card Reviews Carousel -->
-  <section id="reviews" class="block-1-9-card-reviews" data-block="block-1-9-card-reviews">
-    <div class="block-1-9-card-reviews__inner">
-      <div class="block-1-9-card-reviews__carousel">
-        <div class="block-1-9-card-reviews__track" data-track>
+  <!-- Block 1-9 Card Reviews (Authentic Ronn Square 2-Column Layout & Client Quotes) -->
+  <section class="block-1-9-card-reviews" data-block="block-1-9-card-reviews">
+    <div class="block-1-9-card-reviews__header">
+      <h2 class="block-1-9-card-reviews__title anim-hidden" data-anim="title">Client Testimonials</h2>
+      <p class="block-1-9-card-reviews__subtitle anim-hidden" data-anim="subtitle">They trust us</p>
+    </div>
 
-          <!-- Review 1 -->
-          <div class="block-1-9-card-reviews__item is-active" data-item="0">
-            <div class="block-1-9-card-reviews__card anim-hidden" data-anim="card">
-              <div class="block-1-9-card-reviews__img-wrap" data-anim-img>
-                <img width="1024" height="683" src="./assets/portfolio_new/polo-ralph-lauren_01.jpg" class="block-1-9-card-reviews__image" alt="Polo Ralph Lauren project" loading="lazy" decoding="async" />
-              </div>
-              <div class="block-1-9-card-reviews__content">
-                <blockquote class="block-1-9-card-reviews__quote">"Divine Interiors understood our global brand standards immediately. Their team brought craftsmanship, punctuality, and remarkable attention to every detail."</blockquote>
-                <div class="block-1-9-card-reviews__author">
-                  <div class="block-1-9-card-reviews__author-info">
-                    <span class="block-1-9-card-reviews__author-name">Retail Development Team</span>
-                    <span class="block-1-9-card-reviews__author-title">Polo Ralph Lauren</span>
-                  </div>
-                </div>
+    <div class="block-1-9-card-reviews__body anim-hidden" data-anim="body">
+      <!-- Media column -->
+      <div class="block-1-9-card-reviews__video-col">
+        <div class="block-1-9-card-reviews__media-wrapper" data-slide-index="0" data-media-type="image">
+          <img width="1024" height="690" src="./assets/portfolio_new/polo-ralph-lauren_01.jpg" class="block-1-9-card-reviews__image" alt="Polo Ralph Lauren flagship by Divine Interiors" loading="lazy" decoding="async" />
+        </div>
+        <div class="block-1-9-card-reviews__media-wrapper" data-slide-index="1" data-media-type="image">
+          <img width="1024" height="683" src="./assets/portfolio_new/dominos-saket_01.jpg" class="block-1-9-card-reviews__image" alt="Domino's restaurant fit-out by Divine Interiors" loading="lazy" decoding="async" />
+        </div>
+        <div class="block-1-9-card-reviews__media-wrapper" data-slide-index="2" data-media-type="image">
+          <img width="1024" height="683" src="./assets/portfolio_new/mango-mumbai_01.jpg" class="block-1-9-card-reviews__image" alt="MANGO retail flagship store by Divine Interiors" loading="lazy" decoding="async" />
+        </div>
+        <div class="block-1-9-card-reviews__media-wrapper" data-slide-index="3" data-media-type="image">
+          <img width="1024" height="687" src="./assets/projects/project_03_Hettich-Experience-Centre.jpg" class="block-1-9-card-reviews__image" alt="Godrej Interio experience centre by Divine Interiors" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="block-1-9-card-reviews__content-col">
+        <div class="block-1-9-card-reviews__nav" data-anim="nav">
+          <button class="block-1-9-card-reviews__arrow block-1-9-card-reviews__arrow--prev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="block-1-9-card-reviews__arrow block-1-9-card-reviews__arrow--next" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="block-1-9-card-reviews__slides-container" aria-live="polite">
+          <div class="block-1-9-card-reviews__slide" data-slide-index="0">
+            <blockquote class="block-1-9-card-reviews__quote">"Divine Interiors understood our global brand standards immediately. Their team brought craftsmanship, punctuality, and remarkable attention to every architectural detail."</blockquote>
+            <div class="block-1-9-card-reviews__author">
+              <img width="150" height="150" src="./assets/logo-polo-ralph-lauren.png" class="block-1-9-card-reviews__author-avatar" alt="Polo Ralph Lauren" loading="lazy" decoding="async" />
+              <div class="block-1-9-card-reviews__author-info">
+                <span class="block-1-9-card-reviews__author-name">Retail Development Head</span>
+                <span class="block-1-9-card-reviews__author-title">Polo Ralph Lauren</span>
               </div>
             </div>
           </div>
-
-          <!-- Review 2 -->
-          <div class="block-1-9-card-reviews__item" data-item="1">
-            <div class="block-1-9-card-reviews__card anim-hidden" data-anim="card">
-              <div class="block-1-9-card-reviews__img-wrap" data-anim-img>
-                <img width="1024" height="683" src="./assets/portfolio_new/dominos-saket_01.jpg" class="block-1-9-card-reviews__image" alt="Domino's project" loading="lazy" decoding="async" />
-              </div>
-              <div class="block-1-9-card-reviews__content">
-                <blockquote class="block-1-9-card-reviews__quote">"Executing commercial spaces under tight deadlines requires unmatched coordination. Divine Interiors delivered flawlessly with zero operational downtime."</blockquote>
-                <div class="block-1-9-card-reviews__author">
-                  <div class="block-1-9-card-reviews__author-info">
-                    <span class="block-1-9-card-reviews__author-name">Operations &amp; Projects</span>
-                    <span class="block-1-9-card-reviews__author-title">Domino's India</span>
-                  </div>
-                </div>
+          <div class="block-1-9-card-reviews__slide" data-slide-index="1">
+            <blockquote class="block-1-9-card-reviews__quote">"Executing commercial spaces under tight deadlines requires unmatched coordination. Divine Interiors delivered flawlessly with zero operational downtime."</blockquote>
+            <div class="block-1-9-card-reviews__author">
+              <img width="150" height="150" src="./assets/logo-dominos-clean.png" class="block-1-9-card-reviews__author-avatar" alt="Domino's Pizza" loading="lazy" decoding="async" />
+              <div class="block-1-9-card-reviews__author-info">
+                <span class="block-1-9-card-reviews__author-name">Operations &amp; Projects Director</span>
+                <span class="block-1-9-card-reviews__author-title">Domino's Pizza India</span>
               </div>
             </div>
           </div>
-
-          <!-- Review 3 -->
-          <div class="block-1-9-card-reviews__item" data-item="2">
-            <div class="block-1-9-card-reviews__card anim-hidden" data-anim="card">
-              <div class="block-1-9-card-reviews__img-wrap" data-anim-img>
-                <img width="1024" height="683" src="./assets/projects/project_12_Mokobara-DLF-Cyber-City.jpg" class="block-1-9-card-reviews__image" alt="Corporate office fitout" loading="lazy" decoding="async" />
-              </div>
-              <div class="block-1-9-card-reviews__content">
-                <blockquote class="block-1-9-card-reviews__quote">"Our employees were blown away by the new workspace layout. Collaborative zones, acoustic pods, and natural light were integrated seamlessly."</blockquote>
-                <div class="block-1-9-card-reviews__author">
-                  <div class="block-1-9-card-reviews__author-info">
-                    <span class="block-1-9-card-reviews__author-name">Workplace Experience Head</span>
-                    <span class="block-1-9-card-reviews__author-title">PeopleStrong</span>
-                  </div>
-                </div>
+          <div class="block-1-9-card-reviews__slide" data-slide-index="2">
+            <blockquote class="block-1-9-card-reviews__quote">"The spatial quality, storefront layout, and lighting design created an exceptional retail customer journey. Customer and team feedback was an instant wow."</blockquote>
+            <div class="block-1-9-card-reviews__author">
+              <img width="150" height="150" src="./assets/logo-mango-clean.png" class="block-1-9-card-reviews__author-avatar" alt="MANGO Fashion" loading="lazy" decoding="async" />
+              <div class="block-1-9-card-reviews__author-info">
+                <span class="block-1-9-card-reviews__author-name">Store Expansion Manager</span>
+                <span class="block-1-9-card-reviews__author-title">MANGO Fashion</span>
               </div>
             </div>
           </div>
-
+          <div class="block-1-9-card-reviews__slide" data-slide-index="3">
+            <blockquote class="block-1-9-card-reviews__quote">"Divine Interiors managed engineering, civil architecture, and bespoke furniture with full turnkey responsibility. High quality delivered ahead of schedule."</blockquote>
+            <div class="block-1-9-card-reviews__author">
+              <img width="150" height="150" src="./assets/logo-godrej-interio-client.png" class="block-1-9-card-reviews__author-avatar" alt="Godrej Interio" loading="lazy" decoding="async" />
+              <div class="block-1-9-card-reviews__author-info">
+                <span class="block-1-9-card-reviews__author-name">Commercial Operations</span>
+                <span class="block-1-9-card-reviews__author-title">Godrej Interio</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="block-1-9-card-reviews__dots block-1-9-card-reviews__dots--desktop" role="tablist">
-          <button class="block-1-9-card-reviews__dot is-active" role="tab" aria-selected="true" aria-label="Review 1"></button>
-          <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Review 2"></button>
-          <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Review 3"></button>
+          <button class="block-1-9-card-reviews__dot is-active" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+          <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+          <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+          <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
         </div>
       </div>
     </div>
+
+    <!-- Mobile Controls -->
+    <div class="block-1-9-card-reviews__controls-mobile anim-hidden" data-anim="controls-mobile">
+      <button class="block-1-9-card-reviews__arrow block-1-9-card-reviews__arrow--prev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="block-1-9-card-reviews__dots block-1-9-card-reviews__dots--mobile" role="tablist">
+        <button class="block-1-9-card-reviews__dot is-active" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+        <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+        <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+        <button class="block-1-9-card-reviews__dot" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
+      </div>
+      <button class="block-1-9-card-reviews__arrow block-1-9-card-reviews__arrow--next" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
   </section>
 
-  <!-- Block 1-12 CTA Social -->
+  <!-- Block 1-12 CTA Social (Authentic Ronn Square 3-Card Instagram Layout) -->
   <section class="block-1-12-cta-social block-1-12-cta-social--sable" data-block="block-1-12-cta-social" aria-label="Discover More on Social Media">
-    <div class="block-1-12-cta-social__cards anim-hidden" data-anim="cards">
+    <div class="block-1-12-cta-social__cards" data-anim="cards">
+      <!-- Card Left -->
       <div class="block-1-12-cta-social__card block-1-12-cta-social__card--left" data-anim="card">
         <div class="block-1-12-cta-social__card-header">
+          <div class="block-1-12-cta-social__card-logo">
+            <svg viewBox="0 0 11.22 24.25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5.61 21.63C2.74 21.63.4 19.29.4 16.42.4 13.55 2.74 11.22 5.61 11.22c2.87 0 5.2 2.34 5.2 5.2 0 2.87-2.34 5.21-5.2 5.21zm0-1.78c1.89 0 3.43-1.54 3.43-3.43 0-1.89-1.54-3.43-3.43-3.43-1.89 0-3.43 1.54-3.43 3.43 0 1.89 1.54 3.43 3.43 3.43z" fill="currentColor"/>
+              <path d="M5.61 8.67 8.67 5.61 5.61 2.55 2.55 5.61 5.61 8.67zm0 2.55L0 5.61 5.61 0l5.61 5.61-5.61 5.61z" fill="currentColor"/>
+              <path d="M8.23 24.25 5.61 21.62l-2.63 2.63h5.25z" fill="currentColor"/>
+            </svg>
+          </div>
           <div class="block-1-12-cta-social__card-info">
             <span class="block-1-12-cta-social__card-name">Divine Interiors</span>
-            <span class="block-1-12-cta-social__card-location">Delhi NCR &amp; Mumbai</span>
+            <span class="block-1-12-cta-social__card-location">Delhi NCR, India</span>
           </div>
         </div>
         <div class="block-1-12-cta-social__card-image">
           <img width="300" height="200" src="./assets/portfolio_new/polo-ralph-lauren_02.jpg" alt="Polo Ralph Lauren store view" loading="lazy" decoding="async" />
         </div>
+        <div class="block-1-12-cta-social__card-actions">
+          <div class="block-1-12-cta-social__card-actions-left">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4.5 3.5 3.5 0 0 1 13.5 7C13.5 10.5 8 14 8 14z" fill="#FF3040"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#262626" stroke-width="1.2"/><path d="M5.5 10.5 3 13" stroke="#262626" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 2 6 8M14 2l-4 12-4-6-4-4 12-2z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <svg class="block-1-12-cta-social__card-bookmark" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 2H4a1 1 0 0 0-1 1v11l5-3 5 3V3a1 1 0 0 0-1-1z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
+
+      <!-- Card Center -->
       <div class="block-1-12-cta-social__card block-1-12-cta-social__card--center" data-anim="card">
         <div class="block-1-12-cta-social__card-header">
+          <div class="block-1-12-cta-social__card-logo">
+            <svg viewBox="0 0 11.22 24.25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5.61 21.63C2.74 21.63.4 19.29.4 16.42.4 13.55 2.74 11.22 5.61 11.22c2.87 0 5.2 2.34 5.2 5.2 0 2.87-2.34 5.21-5.2 5.21zm0-1.78c1.89 0 3.43-1.54 3.43-3.43 0-1.89-1.54-3.43-3.43-3.43-1.89 0-3.43 1.54-3.43 3.43 0 1.89 1.54 3.43 3.43 3.43z" fill="currentColor"/>
+              <path d="M5.61 8.67 8.67 5.61 5.61 2.55 2.55 5.61 5.61 8.67zm0 2.55L0 5.61 5.61 0l5.61 5.61-5.61 5.61z" fill="currentColor"/>
+              <path d="M8.23 24.25 5.61 21.62l-2.63 2.63h5.25z" fill="currentColor"/>
+            </svg>
+          </div>
           <div class="block-1-12-cta-social__card-info">
             <span class="block-1-12-cta-social__card-name">Divine Interiors</span>
-            <span class="block-1-12-cta-social__card-location">Delhi NCR &amp; Mumbai</span>
+            <span class="block-1-12-cta-social__card-location">Mumbai, India</span>
           </div>
         </div>
         <div class="block-1-12-cta-social__card-image">
           <img width="300" height="200" src="./assets/portfolio_new/mango-mumbai_02.jpg" alt="MANGO retail design" loading="lazy" decoding="async" />
         </div>
+        <div class="block-1-12-cta-social__card-actions">
+          <div class="block-1-12-cta-social__card-actions-left">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4.5 3.5 3.5 0 0 1 13.5 7C13.5 10.5 8 14 8 14z" fill="#FF3040"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#262626" stroke-width="1.2"/><path d="M5.5 10.5 3 13" stroke="#262626" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 2 6 8M14 2l-4 12-4-6-4-4 12-2z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <svg class="block-1-12-cta-social__card-bookmark" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 2H4a1 1 0 0 0-1 1v11l5-3 5 3V3a1 1 0 0 0-1-1z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
+
+      <!-- Card Right -->
       <div class="block-1-12-cta-social__card block-1-12-cta-social__card--right" data-anim="card">
         <div class="block-1-12-cta-social__card-header">
+          <div class="block-1-12-cta-social__card-logo">
+            <svg viewBox="0 0 11.22 24.25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5.61 21.63C2.74 21.63.4 19.29.4 16.42.4 13.55 2.74 11.22 5.61 11.22c2.87 0 5.2 2.34 5.2 5.2 0 2.87-2.34 5.21-5.2 5.21zm0-1.78c1.89 0 3.43-1.54 3.43-3.43 0-1.89-1.54-3.43-3.43-3.43-1.89 0-3.43 1.54-3.43 3.43 0 1.89 1.54 3.43 3.43 3.43z" fill="currentColor"/>
+              <path d="M5.61 8.67 8.67 5.61 5.61 2.55 2.55 5.61 5.61 8.67zm0 2.55L0 5.61 5.61 0l5.61 5.61-5.61 5.61z" fill="currentColor"/>
+              <path d="M8.23 24.25 5.61 21.62l-2.63 2.63h5.25z" fill="currentColor"/>
+            </svg>
+          </div>
           <div class="block-1-12-cta-social__card-info">
             <span class="block-1-12-cta-social__card-name">Divine Interiors</span>
-            <span class="block-1-12-cta-social__card-location">Delhi NCR &amp; Mumbai</span>
+            <span class="block-1-12-cta-social__card-location">Pan-India</span>
           </div>
         </div>
         <div class="block-1-12-cta-social__card-image">
           <img width="201" height="300" src="./assets/portfolio_new/residence-m3m_02.jpg" alt="Luxury living residence" loading="lazy" decoding="async" />
         </div>
+        <div class="block-1-12-cta-social__card-actions">
+          <div class="block-1-12-cta-social__card-actions-left">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4.5 3.5 3.5 0 0 1 13.5 7C13.5 10.5 8 14 8 14z" fill="#FF3040"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#262626" stroke-width="1.2"/><path d="M5.5 10.5 3 13" stroke="#262626" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 2 6 8M14 2l-4 12-4-6-4-4 12-2z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <svg class="block-1-12-cta-social__card-bookmark" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 2H4a1 1 0 0 0-1 1v11l5-3 5 3V3a1 1 0 0 0-1-1z" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
     </div>
 
     <div class="block-1-12-cta-social__content">
-      <h2 class="block-1-12-cta-social__title anim-hidden" data-anim="title">Discover More of Our Creations</h2>
+      <h2 class="block-1-12-cta-social__title anim-hidden" data-anim="title">Discover More on Social Media</h2>
       <div class="block-1-12-cta-social__buttons anim-hidden" data-anim="buttons">
+        <a href="https://www.linkedin.com" class="btn btn--md block-1-12-cta-social__btn" target="_blank" rel="noopener noreferrer" data-anim="btn" data-button-animate-chars>
+          <span class="btn__bg" aria-hidden="true"></span>
+          <span class="btn__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.333 6.66797C14.6591 6.66797 15.9309 7.19475 16.8685 8.13243C17.8062 9.07012 18.333 10.3419 18.333 11.668V17.5013H14.9997V11.668C14.9997 11.2259 14.8241 10.802 14.5115 10.4895C14.199 10.1769 13.775 10.0013 13.333 10.0013C12.891 10.0013 12.4671 10.1769 12.1545 10.4895C11.8419 10.802 11.6663 11.2259 11.6663 11.668V17.5013H8.33301V11.668C8.33301 10.3419 8.85979 9.07012 9.79747 8.13243C10.7352 7.19475 12.0069 6.66797 13.333 6.66797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5.00033 7.5H1.66699V17.5H5.00033V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.33366 5.0013C4.25413 5.0013 5.00033 4.25511 5.00033 3.33464C5.00033 2.41416 4.25413 1.66797 3.33366 1.66797C2.41318 1.66797 1.66699 2.41416 1.66699 3.33464C1.66699 4.25511 2.41318 5.0013 3.33366 5.0013Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="btn__label">LinkedIn</span>
+        </a>
         <a href="#contact" class="btn btn--md block-1-12-cta-social__btn" data-anim="btn" data-button-animate-chars>
           <span class="btn__bg" aria-hidden="true"></span>
-          <span class="btn__label">Start Your Project</span>
+          <span class="btn__label">Contact Us</span>
         </a>
       </div>
     </div>
@@ -817,11 +866,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <script id="rs-main-js" type="module" src="./dist/assets/js/main-C1SzXFGm.js"></script>
 
-<!-- Smooth Page Transition & Opening Orchestrator -->
+<!-- Smooth Page Transition & Standalone Initializer -->
 <script>
 (function() {
   document.addEventListener("DOMContentLoaded", function() {
-    // Intercept top bar and navigation links to trigger Osmo curved wipe transition with Divine Interiors logo
+    // Intercept top bar and navigation links for Osmo transition
     const navLinks = document.querySelectorAll(
       ".header-ronn__nav-link, .header-ronn__menu-link, .header-ronn__logo, .header-ronn__cta-btn, .header-ronn__menu-cta-btn, .footer-ronn__nav-col-link"
     );
@@ -860,24 +909,57 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       });
     });
 
-    // Opening animation on page entrance
-    const loader = document.getElementById("site-loader");
-    if (loader) {
-      if (window.gsap) {
-        window.gsap.to(loader, {
-          autoAlpha: 0,
-          duration: 0.45,
-          ease: "power1.out",
-          onComplete: function() {
-            if (loader.parentNode) loader.parentNode.removeChild(loader);
+    // Failsafe reveal for hero and above-the-fold elements on direct non-Barba page loads
+    setTimeout(function() {
+      if (window.ScrollTrigger) {
+        try { window.ScrollTrigger.refresh(); } catch(e) {}
+      }
+      const hero = document.querySelector(".block-6-1-hero");
+      if (hero) {
+        const heading = hero.querySelector(".block-6-1-hero__heading");
+        const desc = hero.querySelector(".block-6-1-hero__description");
+        const totem = hero.querySelector(".block-6-1-hero__totem");
+        if (heading && getComputedStyle(heading).opacity === "0") {
+          heading.style.opacity = "1";
+          heading.style.visibility = "visible";
+        }
+        if (desc && getComputedStyle(desc).opacity === "0") {
+          desc.style.opacity = "1";
+          desc.style.visibility = "visible";
+        }
+        if (totem && getComputedStyle(totem).opacity === "0") {
+          totem.style.opacity = "1";
+          totem.style.visibility = "visible";
+          totem.style.transform = "none";
+        }
+      }
+
+      // Ensure initial cards in viewport reveal their visuals
+      function revealVisibleCards() {
+        document.querySelectorAll(".block-1-8-projects__card").forEach(function(card) {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 1.25) {
+            card.style.opacity = "1";
+            card.style.visibility = "visible";
+            const inner = card.querySelector("[data-anim-img-inner]");
+            if (inner) {
+              inner.style.clipPath = "none";
+              inner.style.transform = "none";
+            }
+            const info = card.querySelector(".block-1-8-projects__info");
+            if (info) {
+              info.style.opacity = "1";
+              info.style.visibility = "visible";
+              info.style.transform = "none";
+            }
           }
         });
-      } else {
-        setTimeout(function() {
-          if (loader.parentNode) loader.parentNode.removeChild(loader);
-        }, 300);
       }
-    }
+
+      revealVisibleCards();
+      setTimeout(revealVisibleCards, 350);
+      setTimeout(revealVisibleCards, 800);
+    }, 400);
   });
 })();
 </script>
