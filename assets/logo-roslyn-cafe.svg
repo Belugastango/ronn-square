@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" width="360" height="100" fill="none">
+  <text x="180" y="52" font-family="'BT Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="6" fill="#1a1a1a" text-anchor="middle">ROSLYN</text>
+  <line x1="90" y1="66" x2="270" y2="66" stroke="#C46210" stroke-width="1.5" stroke-opacity="0.9" />
+  <text x="180" y="86" font-family="'Geist Mono', Monaco, monospace" font-size="13" font-weight="600" letter-spacing="7" fill="#C46210" text-anchor="middle">CAFE</text>
+</svg>
