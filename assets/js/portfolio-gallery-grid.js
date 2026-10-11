@@ -138,9 +138,37 @@
     filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));
 
     buildLightboxModal();
-    renderCards(ALL_PROJECT_IMAGES);
+
+    const existingCards = gridContainer.querySelectorAll(".rs-project-card");
+    if (existingCards.length > 0) {
+      bindExistingCards(existingCards);
+    } else {
+      renderCards(ALL_PROJECT_IMAGES);
+    }
+
     setupFilters();
     checkInitialHash();
+  }
+
+  function bindExistingCards(cards) {
+    cards.forEach((card) => {
+      const cardId = card.getAttribute("data-project-id");
+      const item = ALL_PROJECT_IMAGES.find(it => it.id === cardId);
+      if (!item) return;
+
+      card.addEventListener("click", () => {
+        const itemIdx = currentFilteredList.indexOf(item);
+        openLightbox(itemIdx !== -1 ? itemIdx : 0);
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const itemIdx = currentFilteredList.indexOf(item);
+          openLightbox(itemIdx !== -1 ? itemIdx : 0);
+        }
+      });
+    });
   }
 
   function renderCards(images) {
@@ -154,6 +182,7 @@
       card.className = "rs-project-card";
       card.setAttribute("data-project-id", item.id);
       card.setAttribute("data-project-slug", item.projectSlug);
+      card.setAttribute("data-project-category", item.category);
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `View ${item.title} photo ${item.indexInProject} of ${item.totalInProject}`);
@@ -239,7 +268,24 @@
       currentFilteredList = ALL_PROJECT_IMAGES.filter(it => it.projectSlug === key);
     }
 
-    renderCards(currentFilteredList);
+    const existingCards = gridContainer.querySelectorAll(".rs-project-card");
+    if (existingCards.length > 0) {
+      existingCards.forEach(card => {
+        const slug = card.getAttribute("data-project-slug");
+        const cat = (card.getAttribute("data-project-category") || "").toLowerCase();
+        let matches = false;
+        if (key === "all") matches = true;
+        else if (key === "retail" || key === "hospitality" || key === "residential") matches = (cat === key);
+        else matches = (slug === key);
+
+        card.style.display = matches ? "" : "none";
+      });
+      if (counterBadge) {
+        counterBadge.textContent = `Showing ${currentFilteredList.length} Photos`;
+      }
+    } else {
+      renderCards(currentFilteredList);
+    }
   }
 
   // Build Lightbox Modal DOM
@@ -413,8 +459,10 @@
 
   window.addEventListener("hashchange", checkInitialHash);
 
-  // Initialize once DOM is ready
-  if (document.readyState === "loading") {
+  // Initialize immediately if element is already parsed, or wait for DOMContentLoaded
+  if (document.getElementById("rs-projects-grid-root")) {
+    init();
+  } else if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
