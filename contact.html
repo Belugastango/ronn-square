@@ -12,12 +12,72 @@
   <link rel="stylesheet" href="./assets/css/mobile-responsive.css">
 
   <style>
-    /* Styling adjustments specifically for contact replica */
+    /* 1. Global Page Background & Canvas */
+    html, body {
+      background-color: var(--color-brand-sable, #FFEAD4) !important;
+      color: var(--color-brand-maron, #231800) !important;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .site-main {
+      background-color: var(--color-brand-sable, #FFEAD4) !important;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 2. Seamless Contact Hero Section */
+    .block-5-1-hero-contact {
+      background-color: var(--color-brand-sable, #FFEAD4) !important;
+      padding: clamp(2rem, 3.5vw, 4rem) clamp(1.5rem, 3.5vw, 4rem) clamp(3.5rem, 5vw, 6rem) !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      gap: clamp(2rem, 3.5vw, 4.5rem) !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      min-height: calc(100vh - 120px);
+    }
     .block-5-1-hero-contact__totem {
       display: none !important;
     }
+    .block-5-1-hero-contact__info {
+      background: transparent !important;
+      flex: 1 1 48% !important;
+      max-width: 50% !important;
+      padding-right: clamp(1rem, 2vw, 2.5rem) !important;
+    }
+    .block-5-1-hero-contact__form-panel {
+      background: #20170a !important;
+      border-radius: 20px !important;
+      box-shadow: 0 20px 60px rgba(32, 23, 10, 0.22) !important;
+      flex: 1 1 50% !important;
+      padding: clamp(2rem, 3.5vw, 3.5rem) !important;
+      box-sizing: border-box !important;
+    }
 
-    /* Balanced 2-column layout for Contact Coordinates on desktop */
+    @media (max-width: 47.99em) {
+      .block-5-1-hero-contact {
+        flex-direction: column !important;
+        padding: 1.5rem 1rem 3rem !important;
+      }
+      .block-5-1-hero-contact__info {
+        max-width: 100% !important;
+        padding-right: 0 !important;
+      }
+      .block-5-1-hero-contact__form-panel {
+        width: 100% !important;
+        padding: 1.75rem 1.25rem !important;
+      }
+    }
+
+    /* 3. Guaranteed Visibility on Initial Load & Direct Reload */
+    .block-5-1-hero-contact .anim-hidden {
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* 4. Contact Coordinates Grid */
     @media (min-width: 48em) {
       .block-5-1-hero-contact__coords {
         display: grid !important;
@@ -36,7 +96,6 @@
       }
     }
 
-    /* Polish form fields to make sure they have crisp borders, no overflow, and clear padding */
     .block-5-1-hero-contact__field input,
     .block-5-1-hero-contact__field textarea {
       box-sizing: border-box !important;
@@ -86,6 +145,57 @@
       opacity: 1;
       transform: translateX(-50%) translateY(-2px);
     }
+
+    /* 5. Luxury Submit Button */
+    .block-5-1-hero-contact__submit-btn {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      min-height: 52px !important;
+      padding: 0.95rem 2rem !important;
+      border-radius: 999px !important;
+      background: #cca9ff !important;
+      color: #20170a !important;
+      border: 1px solid #cca9ff !important;
+      font-family: inherit !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      overflow: hidden !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 18px rgba(204, 169, 255, 0.3) !important;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .block-5-1-hero-contact__submit-btn:hover {
+      background: #debaff !important;
+      color: #120b02 !important;
+      border-color: #debaff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 28px rgba(204, 169, 255, 0.55) !important;
+    }
+    .block-5-1-hero-contact__submit-btn:hover .btn__bg {
+      display: none !important;
+    }
+    .block-5-1-hero-contact__submit-btn:active {
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 10px rgba(204, 169, 255, 0.25) !important;
+    }
+    .block-5-1-hero-contact__submit-label {
+      display: inline-block !important;
+      color: inherit !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      pointer-events: none !important;
+    }
+
+    /* 6. Status Message & In-Place Confirmation Card */
     .contact-form-status {
       display: none;
       margin-top: 1.25rem;
@@ -94,14 +204,6 @@
       font-size: 0.95rem;
       line-height: 1.5;
     }
-    .contact-form-status.is-success {
-      display: block;
-      background: rgba(34, 197, 94, 0.16) !important;
-      border: 1px solid rgba(74, 222, 128, 0.45) !important;
-      color: #86efac !important;
-    }
-
-    /* Inline Success Confirmation Card */
     .di-contact-success-card {
       text-align: center;
       padding: 2.75rem 2rem 2.25rem;
@@ -114,16 +216,28 @@
     }
   </style>
 </head>
-<body class="theme-sable" data-barba="wrapper">
+<body class="wp-singular page-template-default page page-id-500 wp-theme-divine-interiors" style="background-color:#FFEAD4;" data-barba="wrapper">
 
   <!-- Transparent site loader anchor for GSAP gridReveal compatibility -->
   <div id="site-loader" style="position:fixed;inset:0;z-index:210;background:transparent;pointer-events:none;" aria-hidden="true"></div>
 
-  <!-- Smooth Page Transition Shutter -->
-  <div class="osmo-transition-wrap" data-transition-wrap style="position:fixed;inset:0;z-index:9999;pointer-events:none;">
-    <div class="osmo-transition-panel" data-transition-panel style="position:absolute;top:100%;left:0;width:100%;height:100%;background:#38271d;transform:translateY(0);display:flex;align-items:center;justify-content:center;">
-      <div class="osmo-transition-panel-top" data-transition-panel-top style="position:absolute;bottom:100%;left:0;width:100%;height:15vw;background:#38271d;border-top-left-radius:50% 100%;border-top-right-radius:50% 100%;transform-origin:bottom;transform:scaleY(0);"></div>
-      <img class="osmo-transition-logo" data-transition-logo src="./assets/divine-interiors-logo.png" alt="Divine Interiors" style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0;">
+  <!-- Background Base Canvas -->
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__base" style="background-color:#FFEAD4;"></div>
+  </div>
+
+  <!-- Curved-wipe page transition overlay -->
+  <div class="transition" data-transition-wrap aria-hidden="true">
+    <div class="transition__panel" data-transition-panel>
+      <div class="transition__panel-top" data-transition-panel-top>
+        <div class="transition__panel-circle"></div>
+      </div>
+      <div class="transition__panel-bottom" data-transition-panel-bottom>
+        <div class="transition__panel-circle"></div>
+      </div>
+    </div>
+    <div class="transition__logo" data-transition-logo>
+      <img src="./assets/divine-logo-light.png" alt="Divine Interiors" style="width:160px;height:auto;display:block;" />
     </div>
   </div>
 
@@ -200,9 +314,9 @@
     </div>
   </header>
 
-  <main id="main-content" class="site-main" role="main" data-barba="container" data-barba-namespace="contact">
+  <main id="main-content" class="site-main" role="main" data-barba="container" data-barba-namespace="contact" data-initial-bg="sable" data-nav-theme="light">
 
-    <!-- Block 5-1 Hero Contact (Exact Replica of Ronn Square Contact Page) -->
+    <!-- Block 5-1 Hero Contact -->
     <section class="block-5-1-hero-contact" data-block="block-5-1-hero-contact" data-entrance="above-fold" aria-label="LET'S TALK ABOUT YOUR PROJECT">
 
       <!-- Left Column: Info & Coordinates -->
@@ -352,11 +466,10 @@
             </div>
           </div>
 
-          <!-- Submit Button (Lavender / Parme) -->
+          <!-- Submit Button -->
           <div class="block-5-1-hero-contact__form-footer">
-            <button class="btn btn--parme btn--lg block-5-1-hero-contact__submit-btn" type="submit" data-button-animate-chars style="background:#cca9ff;color:#20170a;border:none;font-weight:700;letter-spacing:0.04em;">
-              <span class="btn__bg" aria-hidden="true" style="background:#cca9ff;"></span>
-              <span class="btn__label">SEND MY REQUEST</span>
+            <button class="block-5-1-hero-contact__submit-btn" type="submit" id="di-submit-btn">
+              <span class="block-5-1-hero-contact__submit-label">SEND MY REQUEST</span>
             </button>
           </div>
 
@@ -396,6 +509,365 @@
 
   </main>
 
+<footer id="contact" class="footer-ronn" data-footer-ronn>
+  <div class="footer-ronn__content">
+
+    <!-- SECTION 1: Map -->
+    <section class="footer-ronn__map">
+      <h2 class="footer-ronn__map-title">Bespoke Architecture &amp; Nationwide Turnkey Execution</h2>
+      
+      <div class="footer-ronn__map-row">
+        <div class="footer-ronn__map-info">
+          <div class="footer-ronn__map-group footer-ronn__map-group--office">
+            <h3 class="footer-ronn__map-group-title">Corporate Office</h3>
+            <p class="footer-ronn__map-group-text">
+              B214, Jawahar Park, Devli Road, Khanpur<br />
+              New Delhi-110062, India<br />
+              <a href="tel:+91-9717740876" style="color:inherit;text-decoration:none;font-weight:600;">+91-9717740876</a><br />
+              <a href="mailto:divineinteriors.v@gmail.com" style="color:inherit;text-decoration:none;">divineinteriors.v@gmail.com</a>
+            </p>
+          </div>
+          <div class="footer-ronn__map-group">
+            <h3 class="footer-ronn__map-group-title">Turnkey Specialisation</h3>
+            <p class="footer-ronn__map-group-text">Corporate Fitouts, Commercial Retail, Civil &amp; MEP Infrastructure</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Logo + Nav Columns -->
+    <section class="footer-ronn__nav">
+
+      <div class="footer-ronn__nav-brand">
+        <a href="./index.html" class="footer-ronn__nav-logo" aria-label="Divine Interiors - Home">
+                    <span class="footer-ronn__nav-logo-anim"
+                data-lottie="persistent"
+                data-lottie-src="./assets/lottie/footer-logo.json"
+                data-lottie-play="scroll"
+                data-lottie-viewbox="390 242 1142 601"
+                aria-hidden="true"></span>
+<img src="./assets/divine-interiors-logo.png" alt="Divine Interiors" style="height:55px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">
+                      <span class="footer-ronn__nav-tagline">Spatial Precision &amp; Turnkey Execution</span>
+                  </a>
+                  <a href="mailto:divineinteriors.v@gmail.com" class="footer-ronn__nav-email">divineinteriors.v@gmail.com</a>
+              </div>
+
+      <!-- Mobile-only: siege social -->
+      <div class="footer-ronn__mobile-siege">
+        <h3 class="footer-ronn__map-group-title">Contact Us</h3>
+        <p class="footer-ronn__map-group-text">
+          B214, Jawahar Park, Devli Road, Khanpur<br />
+          New Delhi-110062<br />
+          <a href="tel:+91-9717740876" style="color:inherit;text-decoration:none;font-weight:600;">+91-9717740876</a><br />
+          <a href="mailto:divineinteriors.v@gmail.com" style="color:inherit;text-decoration:none;">divineinteriors.v@gmail.com</a>
+        </p>
+      </div>
+
+
+
+      <!-- Mobile-only: social & reviews -->
+      <div class="footer-ronn__mobile-social">
+        <a href="https://www.linkedin.com/in/dinesh-sharma-288212265/" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="footer-ronn__social-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.333 6.66797C14.6591 6.66797 15.9309 7.19475 16.8685 8.13243C17.8062 9.07012 18.333 10.3419 18.333 11.668V17.5013H14.9997V11.668C14.9997 11.2259 14.8241 10.802 14.5115 10.4895C14.199 10.1769 13.775 10.0013 13.333 10.0013C12.891 10.0013 12.4671 10.1769 12.1545 10.4895C11.8419 10.802 11.6663 11.2259 11.6663 11.668V17.5013H8.33301V11.668C8.33301 10.3419 8.85979 9.07012 9.79747 8.13243C10.7352 7.19475 12.0069 6.66797 13.333 6.66797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.00033 7.5H1.66699V17.5H5.00033V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.33366 5.0013C4.25413 5.0013 5.00033 4.25511 5.00033 3.33464C5.00033 2.41416 4.25413 1.66797 3.33366 1.66797C2.41318 1.66797 1.66699 2.41416 1.66699 3.33464C1.66699 4.25511 2.41318 5.0013 3.33366 5.0013Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://share.google/dTtWreMRBDGS5xsLa" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="Rate Us on Google" style="font-weight:700;">
+          <span style="color:#f59e0b;font-size:1.1rem;line-height:1;margin-right:4px;">★</span>
+          <span>Rate Us</span>
+        </a>
+      </div>
+      
+      <!-- Nav columns -->
+            <div class="footer-ronn__nav-columns">
+                <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Services</h3>
+                    <ul class="footer-ronn__nav-col-list">
+                        <li><a href="#expertise-conseil" class="footer-ronn__nav-col-link">Civil &amp; Interior Architecture</a></li>
+                        <li><a href="#expertise-architecture" class="footer-ronn__nav-col-link">Architecture &amp; Design</a></li>
+                        <li><a href="#expertise-technique" class="footer-ronn__nav-col-link">MEP &amp; Infrastructure</a></li>
+                        <li><a href="#expertise-durabilite" class="footer-ronn__nav-col-link">HVAC &amp; Climate Systems</a></li>
+                        <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">View all services</a></li>
+                      </ul>
+                  </div>
+                <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Sectors</h3>
+                    <ul class="footer-ronn__nav-col-list">
+                        <li><a href="#preoc-bail" class="footer-ronn__nav-col-link">Commercial &amp; Retail Fitouts</a></li>
+                        <li><a href="#preoc-equipes" class="footer-ronn__nav-col-link">Hospitality &amp; Dining Spaces</a></li>
+                        <li><a href="#preoc-talents" class="footer-ronn__nav-col-link">Corporate Workplaces</a></li>
+                        <li><a href="#preoc-complex" class="footer-ronn__nav-col-link">Bespoke Turnkey Projects</a></li>
+                        <li><a href="#preoccupations" class="footer-ronn__nav-col-link">View all sectors</a></li>
+                      </ul>
+                  </div>
+                <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Projects</h3>
+                    <ul class="footer-ronn__nav-col-list">
+                        <li><a href="#projectspolo-ralph-lauren/" class="footer-ronn__nav-col-link">Polo Ralph Lauren</a></li>
+                        <li><a href="#projectsantony-morato/" class="footer-ronn__nav-col-link">Domino's Saket</a></li>
+                        <li><a href="#projectsmango-mumbai/" class="footer-ronn__nav-col-link">MANGO Mumbai</a></li>
+                        <li><a href="#projectspolo-ralph-lauren/" class="footer-ronn__nav-col-link">Antony Morato</a></li>
+                        <li><a href="./projects.html" class="footer-ronn__nav-col-link">All Featured Projects</a></li>
+                      </ul>
+                  </div>
+                <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Company</h3>
+                    <ul class="footer-ronn__nav-col-list">
+                        <li><a href="./about.html" class="footer-ronn__nav-col-link">About</a></li>
+                        <li><a href="#temoignages" class="footer-ronn__nav-col-link">Client Testimonials</a></li>
+                        <li><a href="#faq" class="footer-ronn__nav-col-link">FAQ</a></li>
+                        <li><a href="./contact.html" class="footer-ronn__nav-col-link">Contact Us</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </section>
+
+    <!-- SECTION 3: Bottom Bar (desktop) -->
+    <section class="footer-ronn__bottom">
+      <div class="footer-ronn__bottom-legal">
+        <span>© 2026 Divine Interiors. All rights reserved.</span>
+                <span class="footer-ronn__bottom-legal-sep">|</span>
+        <a href="#mentions-legales" data-legal-open>Legal Notice</a>
+                <span class="footer-ronn__bottom-legal-sep">|</span>
+        <a href="#politique-confidentialite" data-privacy-open>Privacy Policy</a>
+              </div>
+
+
+
+            <div class="footer-ronn__bottom-social" style="display:flex;align-items:center;gap:1.5rem;">
+                <a href="https://www.linkedin.com/in/dinesh-sharma-288212265/" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="footer-ronn__social-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.333 6.66797C14.6591 6.66797 15.9309 7.19475 16.8685 8.13243C17.8062 9.07012 18.333 10.3419 18.333 11.668V17.5013H14.9997V11.668C14.9997 11.2259 14.8241 10.802 14.5115 10.4895C14.199 10.1769 13.775 10.0013 13.333 10.0013C12.891 10.0013 12.4671 10.1769 12.1545 10.4895C11.8419 10.802 11.6663 11.2259 11.6663 11.668V17.5013H8.33301V11.668C8.33301 10.3419 8.85979 9.07012 9.79747 8.13243C10.7352 7.19475 12.0069 6.66797 13.333 6.66797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.00033 7.5H1.66699V17.5H5.00033V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.33366 5.0013C4.25413 5.0013 5.00033 4.25511 5.00033 3.33464C5.00033 2.41416 4.25413 1.66797 3.33366 1.66797C2.41318 1.66797 1.66699 2.41416 1.66699 3.33464C1.66699 4.25511 2.41318 5.0013 3.33366 5.0013Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://share.google/dTtWreMRBDGS5xsLa" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="Rate Us on Google" style="font-weight:700;">
+          <span style="color:#f59e0b;font-size:1.1rem;line-height:1;margin-right:4px;">★</span>
+          <span>Rate Us</span>
+        </a>
+      </div>
+          </section>
+
+    <!-- Mobile-only: Legal links -->
+    <div class="footer-ronn__mobile-legal">
+            <a href="#mentions-legales" data-legal-open>Legal Notice</a>
+            <a href="#politique-confidentialite" data-privacy-open>Privacy Policy</a>
+            <span>© 2026 Divine Interiors. All rights reserved.</span>
+    </div>
+
+    </div>
+</footer>
+
+<div
+  class="legal-mentions"
+  data-legal-modal
+  data-url="#mentions-legales"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="legal-mentions-title"
+  hidden
+>
+  <div class="legal-mentions__backdrop" data-legal-close></div>
+
+  <div class="legal-mentions__modal" role="document">
+
+    <header class="legal-mentions__header">
+      <h2 class="legal-mentions__title" id="legal-mentions-title">Legal Notice</h2>
+      <button
+        type="button"
+        class="legal-mentions__close"
+        data-legal-close
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="legal-mentions__body">
+
+      <aside class="legal-mentions__sidebar">
+        <span class="legal-mentions__sidebar-label">Contents</span>
+        <nav class="legal-mentions__nav" aria-label="Sections" data-legal-nav-list></nav>
+      </aside>
+
+      <div class="legal-mentions__content" data-legal-scroll data-lenis-prevent>
+        <div class="legal-mentions__content-inner" style="padding: 2rem; color: #1a1a1a; line-height: 1.7;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">1. Corporate Information</h2>
+          <p><strong>Divine Interiors</strong><br>
+          Address: B214, Jawahar Park, Devli Road, Khanpur, New Delhi-110062<br>
+          Phone: +91-9717740876<br>
+          Email: divineinteriors.v@gmail.com<br>
+          Core Specialization: Turnkey Interior Architecture, Civil Construction, MEP &amp; HVAC Engineering, and Architectural Facade Solutions.</p>
+          <h2 style="font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700;">2. Intellectual Property</h2>
+          <p>All portfolio imagery, photography, brand trademarks, architectural sketches, and texts published on this site are the property of Divine Interiors and its respective client partners. Any unauthorized reproduction, redistribution, or modification is prohibited.</p>
+          <h2 style="font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700;">3. Professional Disclaimer</h2>
+          <p>Information provided on this website is for general informational purposes. All project delivery terms, technical specifications, and contractual guarantees are established through formal turnkey contracts signed with Divine Interiors.</p>
+        </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div
+  class="privacy-policy"
+  data-privacy-modal
+  data-url="#politique-confidentialite"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="privacy-policy-title"
+  hidden
+>
+  <div class="privacy-policy__backdrop" data-privacy-close></div>
+
+  <div class="privacy-policy__modal" role="document">
+
+    <header class="privacy-policy__header">
+      <h2 class="privacy-policy__title" id="privacy-policy-title">Privacy Policy</h2>
+      <button
+        type="button"
+        class="privacy-policy__close"
+        data-privacy-close
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="privacy-policy__body">
+
+      <aside class="privacy-policy__sidebar">
+        <span class="privacy-policy__sidebar-label">Contents</span>
+        <nav class="privacy-policy__nav" aria-label="Sections" data-privacy-nav-list></nav>
+      </aside>
+
+      <div class="privacy-policy__content" data-privacy-scroll data-lenis-prevent>
+        <div class="privacy-policy__content-inner" style="padding: 2rem; color: #1a1a1a; line-height: 1.7;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">1. Overview</h2>
+          <p>Divine Interiors is committed to respecting your privacy and protecting personal data collected through this website in compliance with applicable data protection regulations.</p>
+          <h2 style="font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700;">2. Information We Collect</h2>
+          <p>We may collect and process personal data when you submit our contact or newsletter forms, including your full name, email address, phone number, and project details.</p>
+          <h2 style="font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700;">3. Use of Personal Data</h2>
+          <p>Your information is used solely to respond to project enquiries, provide architectural consultations, share project updates, and ensure quality customer service.</p>
+          <h2 style="font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700;">4. Contact & Corporate Office</h2>
+          <p>Divine Interiors<br>Address: B214, Jawahar Park, Devli Road, Khanpur, New Delhi-110062<br>Phone: +91-9717740876<br>Email: divineinteriors.v@gmail.com</p>
+        </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div
+  class="lightbox"
+  data-lightbox-modal
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image gallery"
+  hidden
+>
+  <div class="lightbox__backdrop" data-lightbox-close></div>
+
+  <button
+    type="button"
+    class="lightbox__close"
+    data-lightbox-close
+    aria-label="Close"
+  >
+    <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    class="lightbox__arrow lightbox__arrow--prev"
+    data-lightbox-prev
+    aria-label="Previous image"
+  >
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>  </button>
+
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" alt="" />
+  </figure>
+
+  <button
+    type="button"
+    class="lightbox__arrow lightbox__arrow--next"
+    data-lightbox-next
+    aria-label="Next image"
+  >
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+  </button>
+</div>
+<div class="success-popup success-popup--modal" data-form-success="contact" hidden
+     role="dialog" aria-modal="true" aria-labelledby="rs-contact-success-title">
+    <div class="success-popup__backdrop" data-success-close></div>
+  
+  <div class="success-popup__card">
+    <button type="button" class="success-popup__close" data-success-close aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <span class="success-popup__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+  <path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </span>
+
+    <div class="success-popup__text">
+      <p class="success-popup__title" id="rs-contact-success-title">Thank You!</p>
+            <p class="success-popup__body">Your message has been received. Our principal architect will contact you shortly.</p>
+          </div>
+
+        <button type="button" class="success-popup__cta" data-success-close>Close</button>
+    
+    <span class="success-popup__progress" data-success-progress aria-hidden="true"></span>
+  </div>
+</div>
+<div class="success-popup success-popup--toast" data-form-success="newsletter" hidden
+     role="status" aria-live="polite">
+  
+  <div class="success-popup__card">
+    <button type="button" class="success-popup__close" data-success-close aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <span class="success-popup__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+  <path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </span>
+
+    <div class="success-popup__text">
+      <p class="success-popup__title" id="rs-newsletter-success-title">Thank you for subscribing!</p>
+            <p class="success-popup__body">You will receive our latest project showcases and architectural updates.</p>
+          </div>
+
+    
+    <span class="success-popup__progress" data-success-progress aria-hidden="true"></span>
+  </div>
+</div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/ronn_square_back/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
   <!-- Scripts -->
   <script type="module" src="./dist/assets/js/main-C1SzXFGm.js"></script>
   <script>
@@ -412,7 +884,6 @@
               btn.classList.remove("is-copied");
             }, 2000);
           }).catch(function() {
-            // Fallback
             const ta = document.createElement("textarea");
             ta.value = textToCopy;
             document.body.appendChild(ta);
@@ -431,7 +902,7 @@
       const form = document.getElementById("di-contact-page-form");
       const formTitle = document.getElementById("di-form-title");
       const statusBox = document.getElementById("contact-form-status");
-      const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+      const submitBtn = form ? form.querySelector("button[type=\"submit\"]") : null;
       const successCard = document.getElementById("di-contact-success-card");
       const successCardText = document.getElementById("di-success-card-text");
       const successCardWa = document.getElementById("di-success-card-wa");
@@ -493,7 +964,7 @@
             submitBtn.disabled = true;
             submitBtn.style.pointerEvents = "none";
             submitBtn.style.opacity = "0.7";
-            const label = submitBtn.querySelector(".btn__label");
+            const label = submitBtn.querySelector(".block-5-1-hero-contact__submit-label, .btn__label");
             if (label) label.textContent = "SENDING...";
           }
 
@@ -536,11 +1007,10 @@
               submitBtn.disabled = false;
               submitBtn.style.pointerEvents = "auto";
               submitBtn.style.opacity = "1";
-              const label = submitBtn.querySelector(".btn__label");
+              const label = submitBtn.querySelector(".block-5-1-hero-contact__submit-label, .btn__label");
               if (label) label.textContent = "SEND MY REQUEST";
             }
 
-            // Hide form and form title, show gorgeous in-place card
             if (form) form.style.display = "none";
             if (formTitle) formTitle.style.display = "none";
 
@@ -558,42 +1028,31 @@
         });
       }
 
-      // Smooth Page Transition Interception
-      const navLinks = document.querySelectorAll(
-        ".header-ronn__nav-link, .header-ronn__menu-link, .header-ronn__logo, .footer-ronn__nav-col-link"
-      );
-
-      navLinks.forEach(function(link) {
-        link.addEventListener("click", function(e) {
-          const href = link.getAttribute("href");
-          if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
-
-          try {
-            const targetUrl = new URL(href, window.location.href);
-            if (targetUrl.origin === window.location.origin && targetUrl.pathname !== window.location.pathname) {
-              const wrap = document.querySelector("[data-transition-wrap]");
-              const panel = document.querySelector("[data-transition-panel]");
-              const logo = document.querySelector("[data-transition-logo]");
-              const topCurve = document.querySelector("[data-transition-panel-top]");
-
-              if (wrap && panel && window.gsap) {
-                e.preventDefault();
-                const tl = window.gsap.timeline({
-                  onComplete: function() {
-                    window.location.href = href;
-                  }
-                });
-
-                tl.set(wrap, { pointerEvents: "all" })
-                  .set(panel, { autoAlpha: 1, yPercent: 0 })
-                  .set(topCurve, { scaleY: 0, height: "15vw" })
-                  .set(logo, { opacity: 0 })
-                  .to(panel, { yPercent: -100, duration: 0.75, ease: "power3.inOut" }, 0)
-                  .to(topCurve, { scaleY: 1, duration: 0.75, ease: "power3.inOut" }, 0)
-                  .to(logo, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.25);
-              }
-            }
-          } catch(err) {}
+      // Legal & Privacy modal click handlers
+      document.querySelectorAll("[data-legal-open]").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          const modal = document.querySelector("[data-legal-modal]");
+          if (modal) modal.hidden = false;
+        });
+      });
+      document.querySelectorAll("[data-privacy-open]").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          const modal = document.querySelector("[data-privacy-modal]");
+          if (modal) modal.hidden = false;
+        });
+      });
+      document.querySelectorAll("[data-legal-close]").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          const modal = document.querySelector("[data-legal-modal]");
+          if (modal) modal.hidden = true;
+        });
+      });
+      document.querySelectorAll("[data-privacy-close]").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          const modal = document.querySelector("[data-privacy-modal]");
+          if (modal) modal.hidden = true;
         });
       });
 
@@ -608,7 +1067,7 @@
             el.style.transform = "none";
           });
         }
-      }, 400);
+      }, 300);
     });
   </script>
   <script src="./assets/js/mobile-interactions.js"></script>
