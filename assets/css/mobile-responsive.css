@@ -1128,3 +1128,44 @@ body.is-home-entrance .brand-clone {
     display: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   15. Contact Inquiry Success Card (In-Place Luxury Replacement)
+   -------------------------------------------------------------------------- */
+.di-contact-success-card {
+  text-align: center;
+  padding: 2.75rem 2rem 2.25rem;
+  background: #20170a;
+  border-radius: 16px;
+  border: 1px solid rgba(204, 169, 255, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  color: #FFEAD4;
+  box-sizing: border-box;
+  animation: diSuccessFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes diSuccessFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#di-success-card-wa {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#di-success-card-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+#di-send-another-btn:hover {
+  background: rgba(255, 234, 212, 0.08) !important;
+  border-color: rgba(255, 234, 212, 0.5) !important;
+}
+
