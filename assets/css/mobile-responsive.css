@@ -112,21 +112,57 @@ body.is-loaded #site-loader {
     display: none !important;
   }
 
-  /* When actions container wraps hamburger, keep actions flex; otherwise collapse */
+  /* When actions container wraps hamburger/home-btn, keep actions flex */
   .header-ronn__actions {
     display: flex !important;
     align-items: center !important;
     margin-left: auto !important;
     padding: 0 !important;
-    gap: 0 !important;
+    gap: 0.25rem !important;
   }
 
-  .header-ronn__main > .header-ronn__actions:not(:has(.header-ronn__hamburger)) {
+  .header-ronn__main > .header-ronn__actions:not(:has(.header-ronn__hamburger)):not(:has(.header-ronn__home-btn)) {
     display: none !important;
   }
 
+  /* Top Bar Home Button: 44x44px accessible touch target */
+  .header-ronn__home-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #ffead4 !important;
+    cursor: pointer !important;
+    z-index: 10002 !important;
+    touch-action: manipulation !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, transform 0.15s ease !important;
+  }
+
+  .header-ronn__home-btn:active {
+    background-color: rgba(255, 234, 212, 0.14) !important;
+    transform: scale(0.94) !important;
+  }
+
+  .header-ronn__home-icon {
+    width: 22px !important;
+    height: 22px !important;
+    color: #ffead4 !important;
+    stroke: #ffead4 !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+
   .header-ronn__hamburger {
-    margin-left: auto !important;
+    margin-left: 0 !important;
   }
 
   /* Hamburger Toggle Button: minimum 44x44px touch target */
@@ -1063,5 +1099,11 @@ body.is-loaded #site-loader {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+  }
+}
+
+@media (min-width: 48em) {
+  .header-ronn__home-btn {
+    display: none !important;
   }
 }
