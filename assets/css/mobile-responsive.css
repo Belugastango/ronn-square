@@ -1097,3 +1097,34 @@ body.is-home-entrance .brand-clone {
     display: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   14. Footer Visibility: Strictly separate Mobile vs Desktop footer elements
+   -------------------------------------------------------------------------- */
+@media (min-width: 48.01em) {
+  .footer-ronn__mobile-siege,
+  .footer-ronn__mobile-social,
+  .footer-ronn__mobile-legal {
+    display: none !important;
+  }
+}
+
+@media (max-width: 48em) {
+  .footer-ronn__mobile-siege {
+    display: block !important;
+  }
+  .footer-ronn__mobile-social {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .footer-ronn__mobile-legal {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .footer-ronn__bottom {
+    display: none !important;
+  }
+}
