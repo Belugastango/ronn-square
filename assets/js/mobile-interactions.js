@@ -133,25 +133,25 @@
       }, { passive: true });
     }
 
-    // 6. Mobile Failsafe Reveal: Reveal any unrevealed elements on smaller screens
-    setTimeout(function () {
-      if (window.innerWidth <= 768) {
-        document.querySelectorAll('.anim-hidden').forEach(el => {
-          el.classList.remove('anim-hidden');
-          el.style.opacity = '1';
-          el.style.visibility = 'visible';
-          el.style.transform = 'none';
-        });
-
-        // Hide preloader overlay if still lingering
-        const siteLoader = document.getElementById('site-loader');
-        if (siteLoader) {
-          siteLoader.style.display = 'none';
-          siteLoader.style.opacity = '0';
-          siteLoader.style.pointerEvents = 'none';
-        }
+    // 6. Mobile Animation Support: Refresh ScrollTrigger so mobile scroll animations trigger identically to desktop
+    window.addEventListener('load', function () {
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.config({ ignoreMobileResize: true });
+        window.ScrollTrigger.refresh();
       }
-    }, 450);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.refresh();
+      }
+    });
+
+    setTimeout(function () {
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.refresh();
+      }
+    }, 1200);
   }
 
   if (document.readyState === 'loading') {

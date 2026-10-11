@@ -28,12 +28,12 @@ img, video, svg, canvas {
   height: auto;
 }
 
-/* Remove stray preloader overlay after animation */
-html.rs-preloader-seen #site-loader,
-body.is-loaded #site-loader {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  display: none !important;
+/* Full screen coverage for first-load entrance preloader */
+body.is-home-entrance #site-loader {
+  z-index: 100001 !important;
+}
+body.is-home-entrance .brand-clone {
+  z-index: 100002 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -323,13 +323,7 @@ body.is-loaded #site-loader {
     text-decoration: none !important;
   }
 
-  /* Reveal all hidden anim elements on mobile */
-  .anim-hidden,
-  [data-anim].anim-hidden {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
+  /* Smooth animation support on mobile */
 }
 
 /* --------------------------------------------------------------------------
@@ -361,8 +355,6 @@ body.is-loaded #site-loader {
     right: 0 !important;
     position: relative !important;
     display: block !important;
-    clip-path: none !important;
-    transform: none !important;
   }
 
   .block-1-1-hero__image-inner img {
@@ -1093,9 +1085,7 @@ body.is-loaded #site-loader {
    13. Global Animation Failsafe
    -------------------------------------------------------------------------- */
 @media (max-width: 48em) {
-  .anim-revealed,
-  body:not(.rs-js) .anim-hidden,
-  html.rs-first-load .anim-hidden {
+  body:not(.rs-js) .anim-hidden {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
