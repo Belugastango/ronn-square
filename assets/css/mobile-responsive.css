@@ -1,0 +1,1067 @@
+/* ==========================================================================
+   DIVINE INTERIORS — MOBILE & RESPONSIVE DESIGN SYSTEM
+   Optimized for smartphones, iPhones (SE up to 16 Pro Max), iPads & tablets.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Universal Viewport & Overflow Guards
+   -------------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure media never causes horizontal rubber-banding */
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove stray preloader overlay after animation */
+html.rs-preloader-seen #site-loader,
+body.is-loaded #site-loader {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Mobile Header & Navigation Drawer (@media <= 768px / 48em)
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  /* Fix sticky / fixed header on mobile */
+  .header-ronn {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    background: #20170a !important;
+    color: #ffead4 !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255, 234, 212, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+    transform: none !important;
+  }
+
+  /* Hide the top cta bar so the mobile navbar is clean and flush */
+  .header-ronn__cta-bar {
+    display: none !important;
+  }
+
+  .header-ronn__main {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 0 1rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 10005 !important;
+  }
+
+  /* Logo: clean, visible, crisp white on dark bar */
+  .header-ronn__logo {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    text-decoration: none !important;
+  }
+
+  .header-ronn .header-ronn__logo img,
+  .header-ronn--light .header-ronn__logo img,
+  .header-ronn--dark-sable .header-ronn__logo img {
+    height: 32px !important;
+    width: auto !important;
+    max-width: 155px !important;
+    object-fit: contain !important;
+    display: block !important;
+    filter: brightness(0) invert(1) !important; /* Crisp white logo on dark bar */
+    transition: opacity 0.2s ease !important;
+  }
+
+  /* Desktop elements hidden on mobile */
+  .header-ronn__nav {
+    display: none !important;
+  }
+
+  /* Hide all desktop CTA buttons from header actions on mobile */
+  .header-ronn__actions .header-ronn__btn--desktop,
+  .header-ronn__actions .header-ronn__btn--outline,
+  .header-ronn__actions .header-ronn__btn--solid,
+  .header-ronn__mobile-cta {
+    display: none !important;
+  }
+
+  /* When actions container wraps hamburger, keep actions flex; otherwise collapse */
+  .header-ronn__actions {
+    display: flex !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .header-ronn__main > .header-ronn__actions:not(:has(.header-ronn__hamburger)) {
+    display: none !important;
+  }
+
+  .header-ronn__hamburger {
+    margin-left: auto !important;
+  }
+
+  /* Hamburger Toggle Button: minimum 44x44px touch target */
+  .header-ronn__hamburger,
+  [data-header-ronn-toggle] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #ffead4 !important;
+    cursor: pointer !important;
+    z-index: 10002 !important;
+    touch-action: manipulation !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease !important;
+  }
+
+  .header-ronn__hamburger:active {
+    background-color: rgba(255, 234, 212, 0.12) !important;
+  }
+
+  .header-ronn__hamburger-svg {
+    width: 24px !important;
+    height: 24px !important;
+    color: #ffead4 !important;
+    stroke: #ffead4 !important;
+    pointer-events: none !important;
+  }
+
+  /* Breadcrumb banner on subpages */
+  .header-ronn__breadcrumb {
+    display: none !important;
+  }
+
+  /* Mobile Navigation Drawer Fullscreen */
+  .header-ronn__menu {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    background: #20170a !important;
+    color: #ffead4 !important;
+    z-index: 10000 !important;
+    padding: 76px 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s !important;
+  }
+
+  .header-ronn__menu.is-open {
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+    transform: translateY(0) !important;
+  }
+
+  .header-ronn__menu-body {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Menu Links */
+  .header-ronn__menu-link,
+  .header-ronn__menu-parent-link {
+    display: block !important;
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+    text-transform: uppercase !important;
+    color: #ffead4 !important;
+    text-decoration: none !important;
+    padding: 0.85rem 0 !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    border-bottom: 1px solid rgba(255, 234, 212, 0.08) !important;
+    transition: color 0.2s ease, padding-left 0.2s ease !important;
+  }
+
+  .header-ronn__menu-link:active,
+  .header-ronn__menu-link.is-active {
+    color: #cca9ff !important;
+    padding-left: 6px !important;
+  }
+
+  /* Submenus & Accordions inside Drawer */
+  .header-ronn__menu-group {
+    border-bottom: 1px solid rgba(255, 234, 212, 0.08) !important;
+  }
+
+  .header-ronn__menu-link--parent {
+    border-bottom: none !important;
+    justify-content: space-between !important;
+  }
+
+  .header-ronn__menu-group .header-ronn__chevron-toggle {
+    background: transparent !important;
+    border: none !important;
+    color: #ffead4 !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+  }
+
+  .header-ronn__menu-sub {
+    padding-left: 0.75rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .header-ronn__menu-sub-link {
+    display: block !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: rgba(255, 234, 212, 0.8) !important;
+    text-decoration: none !important;
+    padding: 0.55rem 0 !important;
+    min-height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .header-ronn__btn--menu-top {
+    margin-bottom: 1.25rem !important;
+    min-height: 48px !important;
+    border-radius: 999px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    background: #cca9ff !important;
+    color: #20170a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+  }
+
+  /* Reveal all hidden anim elements on mobile */
+  .anim-hidden,
+  [data-anim].anim-hidden {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Homepage Hero Section Mobile Optimization
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-1-1-hero {
+    padding-top: 84px !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    overflow: hidden !important;
+  }
+
+  /* Prevent image bleed / negative margin distortion */
+  .block-1-1-hero__image {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1.5rem 0 !important;
+    overflow: hidden !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 30px rgba(35, 24, 0, 0.12) !important;
+  }
+
+  .block-1-1-hero__image-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+    display: block !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+
+  .block-1-1-hero__image-inner img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 340px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* Hero Heading */
+  .block-1-1-hero__heading {
+    font-size: clamp(1.75rem, 6.8vw, 2.35rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--color-brand-maron, #231800) !important;
+    margin-bottom: 1.5rem !important;
+    word-break: break-word !important;
+  }
+
+  /* "Explore our services" button: high-end luxury pill */
+  .block-1-1-hero__cta-wrapper .btn,
+  .block-1-1-hero .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-height: 48px !important;
+    height: auto !important;
+    padding: 0.85rem 1.85rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    border-radius: 999px !important;
+    background: #231800 !important;
+    color: #ffead4 !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 6px 20px rgba(35, 24, 0, 0.22) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    cursor: pointer !important;
+  }
+
+  .block-1-1-hero .btn:active {
+    transform: scale(0.97) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Trusted By Section (Infinite Colored Logo Marquee) on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-trusted-by {
+    padding: 2.5rem 0 2.25rem 0 !important;
+    overflow: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .block-trusted-by__header {
+    margin-bottom: 1.5rem !important;
+    padding: 0 1.25rem !important;
+  }
+
+  .block-trusted-by__eyebrow {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .block-trusted-by__title {
+    font-size: clamp(1.25rem, 4.8vw, 1.65rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .block-trusted-by__marquee {
+    padding: 0.5rem 0 !important;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+  }
+
+  .block-trusted-by__track {
+    gap: 1.25rem !important;
+    animation-duration: 25s !important;
+  }
+
+  .block-trusted-by__item {
+    height: 46px !important;
+    padding: 0 1.25rem !important;
+    border-radius: 999px !important;
+  }
+
+  .block-trusted-by__logo {
+    height: 22px !important;
+    max-width: 90px !important;
+  }
+
+  /* Subtitle text below marquee */
+  .block-trusted-by__subtext {
+    font-size: 1.05rem !important;
+    line-height: 1.45 !important;
+    color: #231800 !important;
+    opacity: 0.9 !important;
+    padding: 1.5rem 1.25rem 0 !important;
+    text-align: center !important;
+  }
+
+  /* Projects Page Hero (block-6-1-hero) */
+  .block-6-1-hero {
+    padding: 5rem 1.25rem 2rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .block-6-1-hero__totem,
+  .block-6-1-hero__totem--desktop {
+    display: none !important;
+  }
+
+  .block-6-1-hero__heading {
+    font-size: clamp(2.4rem, 9.5vw, 3.2rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .block-6-1-hero__description {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Interactive Project Cards (block-1-8-projects) on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-1-8-projects {
+    padding: 1rem 0 3rem !important;
+    overflow: hidden !important;
+  }
+
+  .block-1-8-projects__grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.75rem !important;
+    padding: 0 1.25rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Mobile Project Cards: Sleek 380px immersive full-bleed presentation */
+  .block-1-8-projects__card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: 0 8px 24px rgba(35, 24, 0, 0.16) !important;
+    background: #18120b !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+  }
+
+  .block-1-8-projects__slideshow {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+  }
+
+  .block-1-8-projects__image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  .block-1-8-projects__gradient {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to top, rgba(18, 14, 10, 0.95) 0%, rgba(18, 14, 10, 0.6) 45%, rgba(18, 14, 10, 0.15) 75%, transparent 100%) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+  }
+
+  .block-1-8-projects__info {
+    position: relative !important;
+    z-index: 5 !important;
+    padding: 1.5rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .block-1-8-projects__company {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: #ffead4 !important;
+    margin: 0 0 0.25rem 0 !important;
+    text-transform: uppercase !important;
+    line-height: 1.15 !important;
+  }
+
+  .block-1-8-projects__location {
+    font-size: 0.85rem !important;
+    color: rgba(255, 234, 212, 0.75) !important;
+    margin: 0 0 0.85rem 0 !important;
+  }
+
+  /* Discover Button on cards */
+  .block-1-8-projects__btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    padding: 0.65rem 1.4rem !important;
+    border-radius: 999px !important;
+    background: #cca9ff !important;
+    color: #20170a !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  .block-1-8-projects__btn:active {
+    transform: scale(0.96) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Quote, Sectors & Services on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  /* Quote section: legible high contrast */
+  .block-1-3-quote {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .block-1-3-quote__title {
+    font-size: clamp(1.2rem, 4.4vw, 1.6rem) !important;
+    line-height: 1.4 !important;
+    color: var(--color-brand-maron, #231800) !important;
+    opacity: 0.95 !important;
+  }
+
+  /* Sectors */
+  .block-1-4-preoccupations {
+    padding: 2.5rem 1.25rem !important;
+  }
+
+  .block-1-4-preoccupations__title {
+    font-size: clamp(1.4rem, 5vw, 1.95rem) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Services */
+  .block-1-7-services {
+    padding: 2.5rem 1.25rem !important;
+  }
+
+  .block-1-7-services__title {
+    font-size: clamp(1.4rem, 5vw, 1.95rem) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .block-1-7-services__item {
+    margin-bottom: 2rem !important;
+  }
+
+  .block-1-7-services__item img {
+    border-radius: 12px !important;
+    max-height: 240px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Testimonials / Reviews (block-1-9-card-reviews) on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-1-9-card-reviews {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .block-1-9-card-reviews__title {
+    font-size: clamp(1.4rem, 5vw, 1.95rem) !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .block-1-9-card-reviews__card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 16px !important;
+  }
+
+  .block-1-9-card-reviews__quote {
+    font-size: clamp(1.05rem, 3.8vw, 1.3rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .block-1-9-card-reviews__author {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+  }
+
+  .block-1-9-card-reviews__author-avatar {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    object-fit: contain !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. CTA & FAQ Section on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-1-10-cta {
+    padding: 3rem 1.25rem !important;
+    text-align: center !important;
+  }
+
+  .block-1-10-cta__title {
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .block-1-10-cta .btn {
+    min-height: 50px !important;
+    padding: 0.85rem 2rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 999px !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* FAQ Accordion: Remove huge blank gaps and reveal questions */
+  .block-1-11-faq {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .block-1-11-faq__title {
+    font-size: clamp(1.4rem, 5vw, 1.95rem) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .block-1-11-faq__item {
+    border-bottom: 1px solid rgba(255, 234, 212, 0.15) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .block-1-11-faq__question {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 52px !important;
+    padding: 0.85rem 0 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+  }
+
+  .block-1-11-faq__answer {
+    padding: 0.5rem 0 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    opacity: 0.9 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer Navigation & Touch Targets Across All Pages
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .footer-ronn {
+    padding: 3rem 1.25rem 2.5rem !important;
+    background: #18120b !important;
+    color: #ffead4 !important;
+  }
+
+  .footer-ronn__map-row,
+  .footer-ronn__map-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .footer-ronn__logo {
+    display: block !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .footer-ronn__logo img {
+    height: 32px !important;
+    width: auto !important;
+    display: block !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  .footer-ronn__nav-col-title,
+  .footer-ronn__map-title {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: #cca9ff !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Every footer link gets minimum 42px touch target */
+  .footer-ronn__nav-col-link,
+  .footer-ronn__social-link,
+  .footer-ronn__map-address {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 42px !important;
+    padding: 0.45rem 0 !important;
+    font-size: 0.95rem !important;
+    color: rgba(255, 234, 212, 0.85) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease, padding-left 0.2s ease !important;
+  }
+
+  .footer-ronn__nav-col-link:active {
+    color: #cca9ff !important;
+    padding-left: 4px !important;
+  }
+
+  .footer-ronn__bottom {
+    margin-top: 2.5rem !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid rgba(255, 234, 212, 0.1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    font-size: 0.8rem !important;
+    color: rgba(255, 234, 212, 0.5) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Contact Page (contact.html) Mobile Overrides
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-5-1-hero-contact {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 76px 1.25rem 3rem !important;
+    gap: 2.5rem !important;
+  }
+
+  .block-5-1-hero-contact__info,
+  .block-5-1-hero-contact__form-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .block-5-1-hero-contact__heading {
+    font-size: clamp(1.85rem, 6.8vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Hide decorative totem SVG that overlaps text on mobile */
+  .block-5-1-hero-contact__totem {
+    display: none !important;
+  }
+
+  /* Coordinates & Touch targets */
+  .block-5-1-hero-contact__coord-item {
+    min-height: 44px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .block-5-1-hero-contact__coord-value--link {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .block-5-1-hero-contact__social-link {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+  }
+
+  .block-5-1-hero-contact__copy-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* "Get a call back" button */
+  .block-5-1-hero-contact__callback-btn {
+    width: 100% !important;
+    min-height: 50px !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-align: center !important;
+  }
+
+  /* Form panel styling */
+  .block-5-1-hero-contact__form-panel {
+    background: #18120b !important;
+    padding: 1.75rem 1.25rem !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 234, 212, 0.12) !important;
+    box-sizing: border-box !important;
+  }
+
+  .block-5-1-hero-contact__form-title {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: #ffead4 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  /* Ensure the form is completely visible */
+  .block-5-1-hero-contact__form {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  /* Form rows: ensure inputs never cramped */
+  .block-5-1-hero-contact__form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.85rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .block-5-1-hero-contact__form-row--2col-mobile {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Text inputs: min-height 50px & font-size 16px to prevent iOS auto-zoom */
+  .block-5-1-hero-contact__field input,
+  .block-5-1-hero-contact__field textarea {
+    width: 100% !important;
+    min-height: 50px !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 16px !important; /* Critical for iOS Safari */
+    color: #ffead4 !important;
+    background: rgba(255, 234, 212, 0.06) !important;
+    border: 1px solid rgba(255, 234, 212, 0.18) !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    transition: border-color 0.2s ease, background 0.2s ease !important;
+  }
+
+  .block-5-1-hero-contact__field input:focus,
+  .block-5-1-hero-contact__field textarea:focus {
+    border-color: #cca9ff !important;
+    background: rgba(255, 234, 212, 0.1) !important;
+  }
+
+  .block-5-1-hero-contact__submit-btn {
+    width: 100% !important;
+    min-height: 52px !important;
+    border-radius: 999px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    background: #cca9ff !important;
+    color: #20170a !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Project Showcase Gallery Modal (projects.html) Mobile Overrides
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .rs-gallery-modal__container {
+    padding: 1rem 0.85rem calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+
+  .rs-gallery-modal__header {
+    gap: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    align-items: center !important;
+  }
+
+  .rs-gallery-modal__title {
+    font-size: 1.15rem !important;
+  }
+
+  .rs-gallery-modal__meta {
+    font-size: 0.75rem !important;
+  }
+
+  .rs-gallery-modal__actions {
+    gap: 0.5rem !important;
+  }
+
+  .rs-gallery-modal__counter {
+    font-size: 0.82rem !important;
+    padding: 0.25rem 0.65rem !important;
+  }
+
+  .rs-gallery-modal__close-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.75rem !important;
+    min-height: 44px !important;
+  }
+
+  .rs-gallery-modal__stage {
+    padding: 0.5rem 0 !important;
+    height: calc(100dvh - 170px) !important;
+  }
+
+  .rs-gallery-modal__main-image {
+    max-height: calc(100dvh - 180px) !important;
+    max-width: 100% !important;
+  }
+
+  .rs-gallery-modal__arrow {
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(18, 14, 10, 0.85) !important;
+  }
+
+  .rs-gallery-modal__arrow--prev {
+    left: 0.25rem !important;
+  }
+
+  .rs-gallery-modal__arrow--next {
+    right: 0.25rem !important;
+  }
+
+  .rs-gallery-modal__footer {
+    padding-top: 0.5rem !important;
+  }
+
+  .rs-gallery-modal__thumbnail {
+    width: 60px !important;
+    height: 44px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. About Page Mobile Overrides (about.html)
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .block-5-1-hero {
+    padding-top: 76px !important;
+  }
+
+  .block-5-1-hero__track {
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .block-5-6-methode {
+    overflow: hidden !important;
+    max-width: 100vw !important;
+    padding: 2.5rem 1.25rem !important;
+  }
+
+  .block-5-6-methode__track {
+    max-width: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .block-5-6-methode__card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .block-7-2-seo__media-inner,
+  .block-7-2-seo__media,
+  .block-5-3-advantages__image-inner,
+  .block-5-3-advantages__image-parallax {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+    margin: 0 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Global Animation Failsafe
+   -------------------------------------------------------------------------- */
+@media (max-width: 48em) {
+  .anim-revealed,
+  body:not(.rs-js) .anim-hidden,
+  html.rs-first-load .anim-hidden {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}

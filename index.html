@@ -2,7 +2,7 @@
 <html lang="en" style="background:#FFEAD4">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-visual">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-visual, viewport-fit=cover">
     <script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
     <script>
     /* Once-per-session preloader gate — runs BEFORE first paint. The big
@@ -105,6 +105,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='rs-main-css-0-css' href='./dist/assets/css/style-DEtV23hX.css' media='all' />
+<link rel='stylesheet' id='di-mobile-css' href='./assets/css/mobile-responsive.css' media='all' />
 <script id="wpml-cookie-js-extra">
 var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":"/"}};
 var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":"/"}};
@@ -141,12 +142,27 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
     object-fit: contain !important;
     filter: none !important;
   }
-  .header-ronn--light .header-ronn__logo img {
-    filter: none !important;
+  @media (min-width: 48em) {
+    .header-ronn--light .header-ronn__logo img {
+      filter: none !important;
+    }
+    .header-ronn--dark-sable .header-ronn__logo img,
+    .header-ronn--dark-parme .header-ronn__logo img {
+      filter: brightness(0) invert(1) !important;
+    }
   }
-  .header-ronn--dark-sable .header-ronn__logo img,
-  .header-ronn--dark-parme .header-ronn__logo img {
-    filter: brightness(0) invert(1) !important;
+  @media (max-width: 47.99em) {
+    .header-ronn .header-ronn__logo,
+    .header-ronn__logo {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: flex !important;
+    }
+    .header-ronn .header-ronn__logo img,
+    .header-ronn--light .header-ronn__logo img,
+    .header-ronn__logo img {
+      filter: brightness(0) invert(1) !important;
+    }
   }
   /* Hide the top cta bar so the header starts flush and clean without overlapping content */
   .header-ronn__cta-bar {
@@ -2024,6 +2040,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
+<script src="./assets/js/mobile-interactions.js"></script>
 </body>
 </html>
