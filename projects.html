@@ -74,6 +74,94 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     border: 1px solid rgba(35, 24, 0, 0.12) !important;
     box-shadow: 0 2px 10px rgba(35, 24, 0, 0.06);
   }
+
+  /* Footer layout and empty space elimination */
+  .footer-ronn {
+    padding-top: clamp(2.5rem, 4vw, 4rem) !important;
+    padding-bottom: clamp(2rem, 3.5vw, 3.5rem) !important;
+  }
+  .footer-ronn__content {
+    gap: clamp(2rem, 3.5vw, 3.5rem) !important;
+  }
+  .footer-ronn__map {
+    gap: 1.5rem !important;
+  }
+  .footer-ronn__map-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 2rem !important;
+    width: 100% !important;
+  }
+  .footer-ronn__map-info {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 2.5rem !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+  .footer-ronn__map-group--office,
+  .footer-ronn__map-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+  .footer-ronn__map-group-title {
+    color: #cca9ff !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+  .footer-ronn__map-group-text {
+    color: rgba(255, 234, 212, 0.85) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+  .footer-ronn__nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 3rem !important;
+    padding-top: 2.25rem !important;
+    border-top: 1px solid rgba(255, 234, 212, 0.12) !important;
+    flex-wrap: wrap !important;
+  }
+  .footer-ronn__nav-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.85rem !important;
+    max-width: 320px !important;
+  }
+  .footer-ronn__nav-tagline {
+    color: rgba(255, 234, 212, 0.7) !important;
+    font-size: 0.88rem !important;
+    margin-top: 0.4rem !important;
+    display: block !important;
+  }
+  .footer-ronn__nav-email {
+    color: #cca9ff !important;
+    font-size: 0.92rem !important;
+    text-decoration: none !important;
+  }
+  .footer-ronn__nav-columns {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(130px, 1fr)) !important;
+    gap: 2rem !important;
+    flex: 1 !important;
+  }
+  @media (max-width: 860px) {
+    .footer-ronn__nav-columns {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 540px) {
+    .footer-ronn__nav-columns {
+      grid-template-columns: 1fr !important;
+    }
+  }
 </style>
 </head>
 <body class="wp-singular page-template-default page page-id-829 wp-theme-divine-interiors">
@@ -511,72 +599,139 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <footer id="contact" class="footer-ronn" data-footer-ronn>
   <div class="footer-ronn__content">
+
+    <!-- SECTION 1: Map / Contact Header -->
     <section class="footer-ronn__map">
       <h2 class="footer-ronn__map-title">Bespoke Architecture &amp; Nationwide Turnkey Execution</h2>
-      <div class="footer-ronn__map-body">
-        <div class="footer-ronn__map-row">
-          <div class="footer-ronn__map-info">
-            <div class="footer-ronn__map-group footer-ronn__map-group--office">
-              <span class="footer-ronn__map-label">Corporate Office</span>
-              <p class="footer-ronn__map-address">
-                B214, Jawahar Park, Devli Road, Khanpur,<br>
-                New Delhi - 110062, India
-              </p>
-            </div>
-            <div class="footer-ronn__map-group">
-              <span class="footer-ronn__map-label">Direct Contact</span>
-              <p class="footer-ronn__map-phone">
-                <a href="tel:+919717740876">+91-9717740876</a>
-              </p>
-              <p class="footer-ronn__map-email">
-                <a href="mailto:divineinteriors.v@gmail.com">divineinteriors.v@gmail.com</a>
-              </p>
-            </div>
-            <div class="footer-ronn__map-group">
-              <span class="footer-ronn__map-label">Turnkey Specialisation</span>
-              <p class="footer-ronn__map-hours">
-                Corporate Fitouts, Commercial Retail, Civil &amp; MEP Infrastructure
-              </p>
-            </div>
+      
+      <div class="footer-ronn__map-row">
+        <div class="footer-ronn__map-info">
+          <div class="footer-ronn__map-group footer-ronn__map-group--office">
+            <h3 class="footer-ronn__map-group-title">Corporate Office</h3>
+            <p class="footer-ronn__map-group-text">
+              B214, Jawahar Park, Devli Road, Khanpur<br />
+              New Delhi - 110062, India<br />
+              <a href="tel:+919717740876" style="color:inherit;text-decoration:none;font-weight:600;">+91-9717740876</a><br />
+              <a href="mailto:divineinteriors.v@gmail.com" style="color:inherit;text-decoration:none;">divineinteriors.v@gmail.com</a>
+            </p>
+          </div>
+          <div class="footer-ronn__map-group">
+            <h3 class="footer-ronn__map-group-title">Turnkey Specialisation</h3>
+            <p class="footer-ronn__map-group-text">
+              Corporate Fitouts, Commercial Retail Architecture, High-Street Boutiques, Civil &amp; MEP Infrastructure.<br />
+              Mon – Sat: 9:30 AM – 7:00 PM IST
+            </p>
+          </div>
+          <div class="footer-ronn__map-group">
+            <h3 class="footer-ronn__map-group-title">Nationwide Delivery</h3>
+            <p class="footer-ronn__map-group-text">
+              Delhi NCR • Mumbai • Bengaluru • Punjab • Gurugram • Noida<br />
+              Turnkey Consultations &amp; Feasibility Studies Available Pan-India
+            </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SECTION 2: Logo + Nav Columns -->
     <section class="footer-ronn__nav">
-      <div class="footer-ronn__nav-col footer-ronn__nav-col--links">
-        <span class="footer-ronn__nav-col-title">Navigation</span>
-        <ul class="footer-ronn__nav-col-list">
-          <li><a href="./index.html" class="footer-ronn__nav-col-link">Home</a></li>
-          <li><a href="./about.html" class="footer-ronn__nav-col-link">About</a></li>
-          <li><a href="./projects.html" class="footer-ronn__nav-col-link">Projects</a></li>
-          <li><a href="./index.html#preoccupations" class="footer-ronn__nav-col-link">Sectors</a></li>
-          <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">Our Services</a></li>
-          <li><a href="./contact.html" class="footer-ronn__nav-col-link">Contact</a></li>
-        </ul>
+
+      <div class="footer-ronn__nav-brand">
+        <a href="./index.html" class="footer-ronn__nav-logo" aria-label="Divine Interiors - Home">
+          <img src="./assets/divine-interiors-logo.png" alt="Divine Interiors" style="height:55px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">
+          <span class="footer-ronn__nav-tagline">Spatial Precision &amp; Turnkey Execution</span>
+        </a>
+        <a href="mailto:divineinteriors.v@gmail.com" class="footer-ronn__nav-email">divineinteriors.v@gmail.com</a>
       </div>
 
-      <div class="footer-ronn__nav-col footer-ronn__nav-col--links">
-        <span class="footer-ronn__nav-col-title">Core Disciplines</span>
-        <ul class="footer-ronn__nav-col-list">
-          <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">Civil &amp; Interior Architecture</a></li>
-          <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">Facade Engineering</a></li>
-          <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">HVAC &amp; Climate Control</a></li>
-          <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">MEP Systems</a></li>
-        </ul>
+      <!-- Mobile-only: contact -->
+      <div class="footer-ronn__mobile-siege">
+        <h3 class="footer-ronn__map-group-title">Contact Us</h3>
+        <p class="footer-ronn__map-group-text">
+          B214, Jawahar Park, Devli Road, Khanpur<br />
+          New Delhi-110062<br />
+          <a href="tel:+919717740876" style="color:inherit;text-decoration:none;font-weight:600;">+91-9717740876</a><br />
+          <a href="mailto:divineinteriors.v@gmail.com" style="color:inherit;text-decoration:none;">divineinteriors.v@gmail.com</a>
+        </p>
       </div>
 
+      <!-- Mobile-only: social -->
+      <div class="footer-ronn__mobile-social">
+        <a href="https://www.linkedin.com/company/divine-interiors/" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="footer-ronn__social-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.333 6.66797C14.6591 6.66797 15.9309 7.19475 16.8685 8.13243C17.8062 9.07012 18.333 10.3419 18.333 11.668V17.5013H14.9997V11.668C14.9997 11.2259 14.8241 10.802 14.5115 10.4895C14.199 10.1769 13.775 10.0013 13.333 10.0013C12.891 10.0013 12.4671 10.1769 12.1545 10.4895C11.8419 10.802 11.6663 11.2259 11.6663 11.668V17.5013H8.33301V11.668C8.33301 10.3419 8.85979 9.07012 9.79747 8.13243C10.7352 7.19475 12.0069 6.66797 13.333 6.66797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5.00033 7.5H1.66699V17.5H5.00033V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.33366 5.0013C4.25413 5.0013 5.00033 4.25511 5.00033 3.33464C5.00033 2.41416 4.25413 1.66797 3.33366 1.66797C2.41318 1.66797 1.66699 2.41416 1.66699 3.33464C1.66699 4.25511 2.41318 5.0013 3.33366 5.0013Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
 
-    </section>
-
-    <section class="footer-ronn__bottom">
-      <div class="footer-ronn__bottom-row">
-        <p class="footer-ronn__copyright">&copy; 2026 Divine Interiors. All Rights Reserved.</p>
-        <div class="footer-ronn__legal-links">
-          <span>Architectural Integrity &amp; Quality Assured</span>
+      <!-- Nav columns -->
+      <div class="footer-ronn__nav-columns">
+        <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Navigation</h3>
+          <ul class="footer-ronn__nav-col-list">
+            <li><a href="./index.html" class="footer-ronn__nav-col-link">Home</a></li>
+            <li><a href="./about.html" class="footer-ronn__nav-col-link">About</a></li>
+            <li><a href="./projects.html" class="footer-ronn__nav-col-link">Projects</a></li>
+            <li><a href="./contact.html" class="footer-ronn__nav-col-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Services</h3>
+          <ul class="footer-ronn__nav-col-list">
+            <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">Civil &amp; Interior Architecture</a></li>
+            <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">Facade Engineering</a></li>
+            <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">HVAC &amp; Climate Systems</a></li>
+            <li><a href="./index.html#expertises" class="footer-ronn__nav-col-link">MEP &amp; Infrastructure</a></li>
+          </ul>
+        </div>
+        <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Sectors</h3>
+          <ul class="footer-ronn__nav-col-list">
+            <li><a href="./index.html#preoccupations" class="footer-ronn__nav-col-link">Commercial &amp; Retail Fitouts</a></li>
+            <li><a href="./index.html#preoccupations" class="footer-ronn__nav-col-link">Hospitality &amp; Dining Spaces</a></li>
+            <li><a href="./index.html#preoccupations" class="footer-ronn__nav-col-link">Corporate Workplaces</a></li>
+            <li><a href="./index.html#preoccupations" class="footer-ronn__nav-col-link">Bespoke Turnkey Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-ronn__nav-col">
+          <h3 class="footer-ronn__nav-col-title">Featured Projects</h3>
+          <ul class="footer-ronn__nav-col-list">
+            <li><a href="./projects.html#polo-ralph-lauren" class="footer-ronn__nav-col-link">Polo Ralph Lauren</a></li>
+            <li><a href="./projects.html#dominos-saket" class="footer-ronn__nav-col-link">Domino's Pizza</a></li>
+            <li><a href="./projects.html#mango-mumbai" class="footer-ronn__nav-col-link">MANGO Mumbai</a></li>
+            <li><a href="./projects.html#residence-m3m" class="footer-ronn__nav-col-link">M3M Residences</a></li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- SECTION 3: Bottom Bar (desktop) -->
+    <section class="footer-ronn__bottom">
+      <div class="footer-ronn__bottom-legal">
+        <span>&copy; 2026 Divine Interiors. All Rights Reserved.</span>
+        <span class="footer-ronn__bottom-legal-sep">|</span>
+        <span>Architectural Integrity &amp; Turnkey Execution</span>
+      </div>
+
+      <div class="footer-ronn__bottom-social">
+        <a href="https://www.linkedin.com/company/divine-interiors/" class="footer-ronn__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="footer-ronn__social-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.333 6.66797C14.6591 6.66797 15.9309 7.19475 16.8685 8.13243C17.8062 9.07012 18.333 10.3419 18.333 11.668V17.5013H14.9997V11.668C14.9997 11.2259 14.8241 10.802 14.5115 10.4895C14.199 10.1769 13.775 10.0013 13.333 10.0013C12.891 10.0013 12.4671 10.1769 12.1545 10.4895C11.8419 10.802 11.6663 11.2259 11.6663 11.668V17.5013H8.33301V11.668C8.33301 10.3419 8.85979 9.07012 9.79747 8.13243C10.7352 7.19475 12.0069 6.66797 13.333 6.66797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5.00033 7.5H1.66699V17.5H5.00033V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.33366 5.0013C4.25413 5.0013 5.00033 4.25511 5.00033 3.33464C5.00033 2.41416 4.25413 1.66797 3.33366 1.66797C2.41318 1.66797 1.66699 2.41416 1.66699 3.33464C1.66699 4.25511 2.41318 5.0013 3.33366 5.0013Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </section>
+
   </div>
 </footer>
 
