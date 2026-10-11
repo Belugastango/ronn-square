@@ -216,7 +216,7 @@
     }
   </style>
 </head>
-<body class="wp-singular page-template-default page page-id-500 wp-theme-divine-interiors" style="background-color:#FFEAD4;" data-barba="wrapper">
+<body class="wp-singular page-template-default page page-id-500 wp-theme-divine-interiors" style="background-color:#FFEAD4;">
 
   <!-- Transparent site loader anchor for GSAP gridReveal compatibility -->
   <div id="site-loader" style="position:fixed;inset:0;z-index:210;background:transparent;pointer-events:none;" aria-hidden="true"></div>
@@ -243,32 +243,45 @@
 
   <!-- Header Navigation -->
   <header class="header-ronn header-ronn--light" data-header-ronn>
+
+    <!-- Skip link (first focusable element; target #main-content exists on every template) -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- CTA Banner Bar -->
     <div class="header-ronn__cta-bar">
-      <div class="header-ronn__cta-marquee">
-        <span class="header-ronn__cta-text">Interior Architecture &amp; Spatial Precision — Pan-India Turnkey Solutions</span>
-        <a href="tel:+919717740876" class="header-ronn__cta-btn">
-          <span class="header-ronn__cta-btn-label">Call Us</span>
-        </a>
-      </div>
+      <p class="header-ronn__cta-text">
+        Discover Divine Interiors!      </p>
+      <a class="btn header-ronn__cta-btn" href="./about.html" data-button-animate-chars>
+        <span class="btn__bg" aria-hidden="true"></span>
+        <span class="btn__label">Discover</span>
+      </a>
     </div>
 
+    <!-- Main Navigation Bar -->
     <div class="header-ronn__main">
-      <a href="./index.html" class="header-ronn__logo" aria-label="Divine Interiors - Home">
-        <img src="./assets/divine-interiors-logo.png" alt="Divine Interiors" style="height:38px;width:auto;object-fit:contain;display:block;">
+
+      <!-- Logo -->
+      <a class="header-ronn__logo" href="./index.html" aria-label="Divine Interiors - Home" style="display:flex;align-items:center;">
+        <img src="./assets/divine-logo-dark.png" alt="Divine Interiors" style="height:38px;width:auto;max-width:180px;object-fit:contain;display:block;">
       </a>
 
+      <!-- Desktop Nav -->
       <nav class="header-ronn__nav" aria-label="Main Navigation">
-        <ul class="header-ronn__nav-list">
-          <li class="header-ronn__nav-item"><a href="./index.html" class="header-ronn__nav-link">Home</a></li>
-          <li class="header-ronn__nav-item"><a href="./about.html" class="header-ronn__nav-link">About</a></li>
-          <li class="header-ronn__nav-item"><a href="./projects.html" class="header-ronn__nav-link">Projects</a></li>
-          <li class="header-ronn__nav-item"><a href="./index.html#preoccupations" class="header-ronn__nav-link">Sectors</a></li>
-          <li class="header-ronn__nav-item"><a href="./index.html#expertises" class="header-ronn__nav-link">Our Services</a></li>
-        </ul>
-      </nav>
+        <ul id="menu-main-menu" class="header-ronn__nav-list"><li class="header-ronn__nav-item"><a href="./index.html" class="header-ronn__nav-link">Home</a></li><li class="header-ronn__nav-item"><a href="./about.html" class="header-ronn__nav-link">About</a></li><li class="header-ronn__nav-item"><a href="./projects.html" class="header-ronn__nav-link">Projects</a></li><li class="header-ronn__nav-item header-ronn__nav-item--has-sub"><a href="./index.html#preoccupations" class="header-ronn__nav-link">Sectors</a><button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Open Sectors submenu"><svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  </button><ul class="header-ronn__dropdown" role="menu"><li role="none"><a href="./index.html#preoc-bail" class="header-ronn__dropdown-link" role="menuitem">Commercial &amp; Retail Fitouts</a></li><li role="none"><a href="./index.html#preoc-complex" class="header-ronn__dropdown-link" role="menuitem">Bespoke Turnkey Projects</a></li><li role="none"><a href="./index.html#preoc-talents" class="header-ronn__dropdown-link" role="menuitem">Corporate Workplaces</a></li><li role="none"><a href="./index.html#preoc-equipes" class="header-ronn__dropdown-link" role="menuitem">Hospitality &amp; Dining Spaces</a></li></ul></li><li class="header-ronn__nav-item header-ronn__nav-item--has-sub"><a href="./index.html#expertises" class="header-ronn__nav-link">Our Services</a><button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Open Our Services submenu"><svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  </button><ul class="header-ronn__dropdown" role="menu"><li role="none"><a href="./index.html#expertise-conseil" class="header-ronn__dropdown-link" role="menuitem">Civil &amp; Interior Architecture</a></li><li role="none"><a href="./index.html#expertise-durabilite" class="header-ronn__dropdown-link" role="menuitem">Facade &amp; Exterior Architecture</a></li><li role="none"><a href="./index.html#expertise-technique" class="header-ronn__dropdown-link" role="menuitem">MEP &amp; Infrastructure</a></li><li role="none"><a href="./index.html#expertise-architecture" class="header-ronn__dropdown-link" role="menuitem">HVAC &amp; Climate Systems</a></li></ul></li></ul>      </nav>
 
+      <!-- Desktop Action Buttons & Mobile Controls -->
       <div class="header-ronn__actions">
-        <a href="./contact.html" class="btn header-ronn__btn header-ronn__btn--solid header-ronn__btn--contact header-ronn__btn--desktop is-active">
+        <a href="./index.html#callpage" class="btn header-ronn__btn header-ronn__btn--outline" data-button-animate-chars>
+          <span class="btn__bg" aria-hidden="true"></span>
+          <span class="btn__label">Book Consultation</span>
+        </a>
+        <a href="./contact.html" class="btn header-ronn__btn header-ronn__btn--solid is-active" data-button-animate-chars>
           <span class="btn__bg" aria-hidden="true"></span>
           <span class="btn__label">Contact Us</span>
         </a>
@@ -280,7 +293,14 @@
           </svg>
         </a>
 
-        <button class="header-ronn__hamburger" type="button" aria-expanded="false" aria-controls="header-menu-panel" aria-label="Open menu" data-header-ronn-toggle>
+        <button
+          class="header-ronn__hamburger"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="header-ronn-menu"
+          data-header-ronn-toggle
+        >
           <svg class="header-ronn__hamburger-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line class="header-ronn__hamburger-line header-ronn__hamburger-line--top" x1="2" y1="8" x2="22" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             <line class="header-ronn__hamburger-line header-ronn__hamburger-line--bottom" x1="2" y1="16" x2="22" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -289,30 +309,91 @@
       </div>
     </div>
 
-    <nav class="header-ronn__breadcrumb" aria-label="Breadcrumb">
+    <!-- Breadcrumb (shell always rendered so JS can target it during Barba transitions) -->
+    <nav class="header-ronn__breadcrumb header-ronn__breadcrumb--empty" aria-label="Fil d&#039;Ariane">
       <div class="header-ronn__breadcrumb-track">
-        <a href="./index.html" class="header-ronn__breadcrumb-link header-ronn__breadcrumb-link--inactive">Home</a>
-        <span class="header-ronn__breadcrumb-sep">/</span>
-        <span class="header-ronn__breadcrumb-link" aria-current="page">Contact</span>
       </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="header-ronn__menu" id="header-menu-panel" data-header-ronn-menu aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <div
+      class="header-ronn__menu"
+      id="header-ronn-menu"
+      data-header-ronn-menu
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Navigation menu"
+      tabindex="-1"
+    >
       <div class="header-ronn__menu-body">
+        <!-- Contact CTA — first item in the panel -->
         <a href="./contact.html" class="btn header-ronn__btn header-ronn__btn--solid header-ronn__btn--full header-ronn__btn--menu-top">
           <span class="btn__bg" aria-hidden="true"></span>
           <span class="btn__label">Contact Us</span>
         </a>
+
         <a href="./index.html" class="header-ronn__menu-link">Home</a>
+
         <a href="./about.html" class="header-ronn__menu-link">About</a>
         <a href="./projects.html" class="header-ronn__menu-link">Projects</a>
-        <a href="./index.html#preoccupations" class="header-ronn__menu-link">Sectors</a>
-        <a href="./index.html#expertises" class="header-ronn__menu-link">Our Services</a>
+        <div class="header-ronn__menu-group" data-header-ronn-accordion>
+          <div class="header-ronn__menu-link header-ronn__menu-link--parent">
+            <a href="./index.html#preoccupations" class="header-ronn__menu-parent-link">Sectors</a>
+            <button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-label="Open Sectors submenu">
+              <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="header-ronn__menu-sub" hidden>
+            <div class="header-ronn__menu-sub-inner">
+              <a href="./index.html#preoc-bail" class="header-ronn__menu-sub-link">Commercial &amp; Retail Fitouts</a>
+              <a href="./index.html#preoc-complex" class="header-ronn__menu-sub-link">Bespoke Turnkey Projects</a>
+              <a href="./index.html#preoc-talents" class="header-ronn__menu-sub-link">Corporate Workplaces</a>
+              <a href="./index.html#preoc-equipes" class="header-ronn__menu-sub-link">Hospitality &amp; Dining Spaces</a>
+            </div>
+          </div>
+        </div>
+        <div class="header-ronn__menu-group" data-header-ronn-accordion>
+          <div class="header-ronn__menu-link header-ronn__menu-link--parent">
+            <a href="./index.html#expertises" class="header-ronn__menu-parent-link">Our Services</a>
+            <button class="header-ronn__chevron-toggle" type="button" aria-expanded="false" aria-label="Open Our Services submenu">
+              <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L6 5L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="header-ronn__menu-sub" hidden>
+            <div class="header-ronn__menu-sub-inner">
+              <a href="./index.html#expertise-conseil" class="header-ronn__menu-sub-link">Civil &amp; Interior Architecture</a>
+              <a href="./index.html#expertise-durabilite" class="header-ronn__menu-sub-link">Facade &amp; Exterior Architecture</a>
+              <a href="./index.html#expertise-technique" class="header-ronn__menu-sub-link">MEP &amp; Infrastructure</a>
+              <a href="./index.html#expertise-architecture" class="header-ronn__menu-sub-link">HVAC &amp; Climate Systems</a>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation links: FAQ / Client Testimonials / Contact -->
+        <a href="./index.html#faq" class="header-ronn__menu-link">FAQ</a>
+        <a href="./index.html#temoignages" class="header-ronn__menu-link">Client Testimonials</a>
         <a href="./contact.html" class="header-ronn__menu-link is-active">Contact</a>
+      </div>
+
+      <!-- Menu Footer -->
+      <div class="header-ronn__menu-footer">
+        <div class="header-ronn__menu-cta">
+          <p class="header-ronn__menu-cta-text">
+            Discover Divine Interiors!
+          </p>
+          <a href="./about.html" class="btn header-ronn__menu-cta-btn" data-button-animate-chars>
+            <span class="btn__bg" aria-hidden="true"></span>
+            <span class="btn__label">Discover</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
+
+  <div data-barba="wrapper">
 
   <main id="main-content" class="site-main" role="main" data-barba="container" data-barba-namespace="contact" data-initial-bg="sable" data-nav-theme="light">
 
@@ -508,6 +589,8 @@
     </section>
 
   </main>
+
+  </div><!-- /data-barba="wrapper" -->
 
 <footer id="contact" class="footer-ronn" data-footer-ronn>
   <div class="footer-ronn__content">
