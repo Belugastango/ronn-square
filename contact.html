@@ -13,6 +13,36 @@
 
   <style>
     /* Styling adjustments specifically for contact replica */
+    .block-5-1-hero-contact__totem {
+      display: none !important;
+    }
+
+    /* Balanced 2-column layout for Contact Coordinates on desktop */
+    @media (min-width: 48em) {
+      .block-5-1-hero-contact__coords {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.75rem 2.5rem !important;
+        align-items: start !important;
+      }
+      .block-5-1-hero-contact__coord-item {
+        grid-column: auto !important;
+        grid-row: auto !important;
+      }
+      .block-5-1-hero-contact__coord-item--social {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        align-self: start !important;
+      }
+    }
+
+    /* Polish form fields to make sure they have crisp borders, no overflow, and clear padding */
+    .block-5-1-hero-contact__field input,
+    .block-5-1-hero-contact__field textarea {
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
     .block-5-1-hero-contact__coord-value--link {
       color: inherit;
       text-decoration: none;
@@ -58,17 +88,17 @@
     }
     .contact-form-status {
       display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: 8px;
+      margin-top: 1.25rem;
+      padding: 1.1rem 1.25rem;
+      border-radius: 10px;
       font-size: 0.95rem;
       line-height: 1.5;
     }
     .contact-form-status.is-success {
       display: block;
-      background: rgba(46, 125, 50, 0.15);
-      border: 1px solid rgba(46, 125, 50, 0.4);
-      color: #1b5e20;
+      background: rgba(34, 197, 94, 0.18) !important;
+      border: 1px solid rgba(74, 222, 128, 0.45) !important;
+      color: #86efac !important;
     }
   </style>
 </head>
@@ -189,12 +219,6 @@
             </div>
           </div>
 
-          <!-- Opening Hours -->
-          <div class="block-5-1-hero-contact__coord-item" data-coord="hours">
-            <span class="block-5-1-hero-contact__coord-label">Opening hours</span>
-            <span class="block-5-1-hero-contact__coord-value">Mon - Sat: 9:00 AM - 7:00 PM</span>
-          </div>
-
           <!-- Email -->
           <div class="block-5-1-hero-contact__coord-item" data-coord="email">
             <span class="block-5-1-hero-contact__coord-label">Email</span>
@@ -205,6 +229,12 @@
                 <span class="block-5-1-hero-contact__copy-label" aria-hidden="true">Copied</span>
               </button>
             </div>
+          </div>
+
+          <!-- Opening Hours -->
+          <div class="block-5-1-hero-contact__coord-item" data-coord="hours">
+            <span class="block-5-1-hero-contact__coord-label">Opening hours</span>
+            <span class="block-5-1-hero-contact__coord-value">Mon - Sat: 9:00 AM - 7:00 PM</span>
           </div>
 
           <!-- Phone -->
@@ -233,9 +263,9 @@
           <div class="block-5-1-hero-contact__coord-item block-5-1-hero-contact__coord-item--social" data-coord="social">
             <a href="https://www.linkedin.com/in/dinesh-sharma-288212265/" class="block-5-1-hero-contact__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <span class="block-5-1-hero-contact__social-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="6" fill="currentColor"/><path d="M10 15.5H15V30H10V15.5Z" fill="var(--color-brand-sable, #FFEAD4)"/><circle cx="12.5" cy="11" r="2.8" fill="var(--color-brand-sable, #FFEAD4)"/><path d="M18 15.5H22.5V17.5C23.5 16 25.2 15 27.5 15C31.5 15 33 17.8 33 21.5V30H28V22.5C28 20.8 27.2 19.5 25.5 19.5C23.8 19.5 23 20.8 23 22.5V30H18V15.5Z" fill="var(--color-brand-sable, #FFEAD4)"/></svg>
+                <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="6" fill="currentColor"/><path d="M10 15.5H15V30H10V15.5Z" fill="var(--color-brand-sable, #FFEAD4)"/><circle cx="12.5" cy="11" r="2.8" fill="var(--color-brand-sable, #FFEAD4)"/><path d="M18 15.5H22.5V17.5C23.5 16 25.2 15 27.5 15C31.5 15 33 17.8 33 21.5V30H28V22.5C28 20.8 27.2 19.5 25.5 19.5C23.8 19.5 23 20.8 23 22.5V30H18V15.5Z" fill="var(--color-brand-sable, #FFEAD4)"/></svg>
               </span>
-              <span class="block-5-1-hero-contact__social-label">LinkedIn</span>
+              <span class="block-5-1-hero-contact__social-label" style="font-weight:600;">LinkedIn</span>
             </a>
           </div>
 
@@ -257,16 +287,16 @@
           Fill out the form below
         </p>
 
-        <form class="block-5-1-hero-contact__form anim-hidden" id="di-contact-page-form" data-anim="form" action="#" method="post" novalidate>
+        <form class="block-5-1-hero-contact__form anim-hidden" id="di-contact-page-form" data-anim="form" data-form-bound="1" action="https://docs.google.com/forms/d/e/1FAIpQLSec5nQeOcXg5yF-Sur542br7NZTGn1Vbj-SUTbZ46pXGI6wbw/formResponse" method="POST" target="gform-hidden-iframe">
 
           <!-- Row 1: Name -->
           <div class="block-5-1-hero-contact__form-row block-5-1-hero-contact__form-row--2col block-5-1-hero-contact__form-row--2col-mobile">
             <div class="block-5-1-hero-contact__field">
-              <input type="text" id="di-last-name" name="nom" placeholder="Your last name *" autocomplete="family-name" required aria-label="Your last name *">
+              <input type="text" id="di-last-name" name="entry.947323197" placeholder="Your last name *" autocomplete="family-name" required aria-label="Your last name *">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
             <div class="block-5-1-hero-contact__field">
-              <input type="text" id="di-first-name" name="prenom" placeholder="Your first name *" autocomplete="given-name" required aria-label="Your first name *">
+              <input type="text" id="di-first-name" name="entry.508886399" placeholder="Your first name *" autocomplete="given-name" required aria-label="Your first name *">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
           </div>
@@ -274,11 +304,11 @@
           <!-- Row 2: Email & Phone -->
           <div class="block-5-1-hero-contact__form-row block-5-1-hero-contact__form-row--2col">
             <div class="block-5-1-hero-contact__field">
-              <input type="email" id="di-email" name="email" placeholder="Business email *" autocomplete="email" required aria-label="Business email *">
+              <input type="email" id="di-email" name="entry.1995696701" placeholder="Business email *" autocomplete="email" required aria-label="Business email *">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
             <div class="block-5-1-hero-contact__field">
-              <input type="tel" id="di-phone" name="telephone" inputmode="tel" placeholder="Phone" autocomplete="tel" aria-label="Phone">
+              <input type="tel" id="di-phone" name="entry.1132374789" inputmode="tel" placeholder="Phone" autocomplete="tel" aria-label="Phone">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
           </div>
@@ -286,18 +316,18 @@
           <!-- Row 3: Company & Area (2 columns) -->
           <div class="block-5-1-hero-contact__form-row block-5-1-hero-contact__form-row--2col">
             <div class="block-5-1-hero-contact__field">
-              <input type="text" id="di-company" name="entreprise" placeholder="Company *" autocomplete="organization" required aria-label="Company *">
+              <input type="text" id="di-company" name="entry.1185401711" placeholder="Company *" autocomplete="organization" required aria-label="Company *">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
             <div class="block-5-1-hero-contact__field">
-              <input type="text" id="di-surface" name="surface" placeholder="Estimated surface area" aria-label="Estimated surface area">
+              <input type="text" id="di-surface" name="entry.295256446" placeholder="Estimated surface area" aria-label="Estimated surface area">
             </div>
           </div>
 
           <!-- Row 4: Location (Full Width) -->
           <div class="block-5-1-hero-contact__form-row">
             <div class="block-5-1-hero-contact__field">
-              <input type="text" id="di-location" name="localisation" placeholder="Location *" required aria-label="Location *">
+              <input type="text" id="di-location" name="entry.1760498963" placeholder="Location *" required aria-label="Location *">
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
           </div>
@@ -305,7 +335,7 @@
           <!-- Row 5: Project Scope (Full Width Textarea) -->
           <div class="block-5-1-hero-contact__form-row">
             <div class="block-5-1-hero-contact__field">
-              <textarea id="di-project-desc" name="projet" placeholder="Your project *" rows="5" required aria-label="Your project *"></textarea>
+              <textarea id="di-project-desc" name="entry.76371284" placeholder="Your project *" rows="5" required aria-label="Your project *"></textarea>
               <span class="field-error" data-field-error role="alert" aria-live="polite"></span>
             </div>
           </div>
@@ -318,22 +348,13 @@
             </button>
           </div>
 
+          <!-- Hidden iframe for seamless Google Forms POST without page redirects or CORS -->
+          <iframe name="gform-hidden-iframe" id="gform-hidden-iframe" style="display:none;" aria-hidden="true"></iframe>
+
           <!-- Status Message Container -->
           <div id="contact-form-status" class="contact-form-status" role="status"></div>
 
         </form>
-
-        <!-- Floating Geometric Totem at Top Right (Lavender) -->
-        <div class="block-5-1-hero-contact__totem anim-hidden" data-anim="totem" aria-hidden="true" style="color:#cca9ff;">
-          <svg class="seo-totem" viewBox="-157 -199 228 270" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g data-seo-part="move">
-              <g data-seo-part="spin">
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M37.49 59.95C4.43 80.62 -39.28 70.55 -59.95 37.49C-80.62 4.43 -70.55 -39.28 -37.49 -59.95C-4.43 -80.62 39.28 -70.55 59.95 -37.49C80.62 -4.43 70.55 39.28 37.49 59.95ZM24.7 39.49C46.47 25.88 53.11 -2.92 39.49 -24.7C25.88 -46.47 -2.92 -53.11 -24.7 -39.49C-46.47 -25.87 -53.11 2.92 -39.49 24.7C-25.87 46.47 2.92 53.11 24.7 39.49Z"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" transform="translate(-74.29 -126.48)" d="M40.42 64.63L-64.63 40.42L-40.42 -64.63L64.63 -40.42L40.42 64.63ZM22.02 35.21L35.21 -22.02L-22.02 -35.21L-35.21 22.02L22.02 35.21Z"/>
-              </g>
-            </g>
-          </svg>
-        </div>
 
       </div>
 
@@ -379,28 +400,43 @@
 
       if (form && statusBox) {
         form.addEventListener("submit", function(e) {
-          e.preventDefault();
+          const lastNameEl = document.getElementById("di-last-name");
+          const firstNameEl = document.getElementById("di-first-name");
+          const emailEl = document.getElementById("di-email");
+          const phoneEl = document.getElementById("di-phone");
+          const companyEl = document.getElementById("di-company");
+          const surfaceEl = document.getElementById("di-surface");
+          const locationEl = document.getElementById("di-location");
+          const projectEl = document.getElementById("di-project-desc");
 
-          const lastName = document.getElementById("di-last-name").value.trim();
-          const firstName = document.getElementById("di-first-name").value.trim();
-          const email = document.getElementById("di-email").value.trim();
-          const phone = document.getElementById("di-phone").value.trim();
-          const company = document.getElementById("di-company").value.trim();
-          const surface = document.getElementById("di-surface").value.trim();
-          const location = document.getElementById("di-location").value.trim();
-          const project = document.getElementById("di-project-desc").value.trim();
+          const lastName = (lastNameEl ? lastNameEl.value : "").trim();
+          const firstName = (firstNameEl ? firstNameEl.value : "").trim();
+          const email = (emailEl ? emailEl.value : "").trim();
+          const phone = (phoneEl ? phoneEl.value : "").trim();
+          const company = (companyEl ? companyEl.value : "").trim();
+          const surface = (surfaceEl ? surfaceEl.value : "").trim();
+          const location = (locationEl ? locationEl.value : "").trim();
+          const project = (projectEl ? projectEl.value : "").trim();
 
           if (!lastName || !firstName || !email || !company || !location || !project) {
+            e.preventDefault();
             statusBox.className = "contact-form-status";
             statusBox.style.display = "block";
             statusBox.style.background = "rgba(183, 28, 28, 0.15)";
             statusBox.style.color = "#c62828";
             statusBox.textContent = "Please fill in all required fields marked with *.";
+
+            const firstEmpty = [lastNameEl, firstNameEl, emailEl, companyEl, locationEl, projectEl].find(function(el) {
+              return el && !el.value.trim();
+            });
+            if (firstEmpty) firstEmpty.focus();
             return;
           }
 
+          // Fields valid: form will natively submit to target="gform-hidden-iframe" without page reload or CORS errors
           if (submitBtn) {
             submitBtn.disabled = true;
+            submitBtn.style.pointerEvents = "none";
             submitBtn.style.opacity = "0.7";
             const label = submitBtn.querySelector(".btn__label");
             if (label) label.textContent = "SENDING...";
@@ -408,7 +444,7 @@
 
           const clientName = firstName + " " + lastName;
           const waMessage = encodeURIComponent(
-            "Hello Divine Interiors, I submitted a project request:\nName: " + clientName +
+            "Hello Divine Interiors, I submitted a project consultation request:\nName: " + clientName +
             "\nCompany: " + company +
             "\nEmail: " + email +
             "\nPhone: " + (phone || "N/A") +
@@ -417,21 +453,32 @@
             "\nScope: " + project
           );
 
-          // Google Form Endpoint & Payload
+          // Background dual-transport fetch assurance
           const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSec5nQeOcXg5yF-Sur542br7NZTGn1Vbj-SUTbZ46pXGI6wbw/formResponse";
-          const formPayload = new URLSearchParams();
-          formPayload.append("entry.947323197", lastName);
-          formPayload.append("entry.508886399", firstName);
-          formPayload.append("entry.1995696701", email);
-          formPayload.append("entry.1132374789", phone || "");
-          formPayload.append("entry.1185401711", company);
-          formPayload.append("entry.295256446", surface || "");
-          formPayload.append("entry.1760498963", location);
-          formPayload.append("entry.76371284", project);
+          try {
+            const formPayload = new URLSearchParams();
+            formPayload.append("entry.947323197", lastName);
+            formPayload.append("entry.508886399", firstName);
+            formPayload.append("entry.1995696701", email);
+            formPayload.append("entry.1132374789", phone || "");
+            formPayload.append("entry.1185401711", company);
+            formPayload.append("entry.295256446", surface || "");
+            formPayload.append("entry.1760498963", location);
+            formPayload.append("entry.76371284", project);
 
-          const finalizeSubmission = function() {
+            fetch(googleFormAction, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: formPayload.toString()
+            }).catch(function() {});
+          } catch(err) {}
+
+          // Display success state and reset form after browser dispatches native iframe POST
+          setTimeout(function() {
             if (submitBtn) {
               submitBtn.disabled = false;
+              submitBtn.style.pointerEvents = "auto";
               submitBtn.style.opacity = "1";
               const label = submitBtn.querySelector(".btn__label");
               if (label) label.textContent = "SEND MY REQUEST";
@@ -439,55 +486,13 @@
             statusBox.className = "contact-form-status is-success";
             statusBox.innerHTML = `
               <strong>✓ Request Sent &amp; Recorded!</strong><br>
-              Thank you, ${clientName}. Your response has been securely submitted. Our architectural consultation team will review your project and get in touch within 24 hours.<br>
+              Thank you, ${clientName}. Your project details have been successfully received. Our architectural team will review your requirements and reach out within 24 hours.<br>
               <a href="https://wa.me/919717740876?text=${waMessage}" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;color:#15803d;font-weight:700;text-decoration:underline;">
                 Chat directly on WhatsApp with Senior Architect →
               </a>
             `;
             form.reset();
-          };
-
-          fetch(googleFormAction, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: formPayload.toString()
-          }).then(function() {
-            finalizeSubmission();
-          }).catch(function() {
-            // Fallback hidden form submission in case fetch is blocked by strict browser policy
-            try {
-              let iframe = document.getElementById("gform-hidden-iframe");
-              if (!iframe) {
-                iframe = document.createElement("iframe");
-                iframe.id = "gform-hidden-iframe";
-                iframe.name = "gform-hidden-iframe";
-                iframe.style.display = "none";
-                document.body.appendChild(iframe);
-              }
-              const tempForm = document.createElement("form");
-              tempForm.action = googleFormAction;
-              tempForm.method = "POST";
-              tempForm.target = "gform-hidden-iframe";
-              tempForm.style.display = "none";
-
-              for (const [key, val] of formPayload.entries()) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = val;
-                tempForm.appendChild(input);
-              }
-              document.body.appendChild(tempForm);
-              tempForm.submit();
-              setTimeout(function() {
-                document.body.removeChild(tempForm);
-              }, 1000);
-            } catch(e) {}
-            finalizeSubmission();
-          });
+          }, 750);
         });
       }
 
