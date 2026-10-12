@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-visual, viewport-fit=cover">
     <script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
     <script>
-    /* Once-per-session preloader gate — runs BEFORE first paint. The big
-       wordmark preloader plays only on the first fresh load of a session;
-       later fresh loads get the `rs-preloader-seen` class (read by
-       preloader-session.js) and a quick loader fade instead. */
-    document.documentElement.classList.add('rs-js'); /* JS present — gates the no-JS loader failsafe (see _transition.scss) */
-    /* First-load only: lets the hero image paint visible so Chrome can record it
-       as the LCP candidate. It loads eagerly at fetchpriority=high, and an image
-       that finishes loading while hidden is discarded by LCP forever, because a
-       later GSAP reveal is not a new paint and emits no entry. The opaque
-       #site-loader veil hides it from the user meanwhile (LCP does no occlusion
-       testing), and block-1-1-hero-anim's fromTo stamps the clipped start state
-       before the veil lifts. Barba drops this flag on the first leave: an
-       injected container is revealed BEFORE initPage runs and would flash. */
+    document.documentElement.classList.add('rs-js');
     document.documentElement.classList.add('rs-first-load');
-    (function(){try{
-        if(sessionStorage.getItem('rsPreloaderSeen')){document.documentElement.classList.add('rs-preloader-seen');}
-        else{sessionStorage.setItem('rsPreloaderSeen','1');}
-    }catch(e){}})();
+    document.documentElement.classList.add('rs-preloader-seen');
+    try { sessionStorage.setItem('rsPreloaderSeen', '1'); } catch(e) {}
     </script>
+    <link rel="preload" href="./dist/assets/woff2/N27-Regular-BbgSAH5W.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./dist/assets/woff2/Gambetta-Regular-BShmYfa4.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./dist/assets/woff2/Gambetta-Medium-DqscGjuk.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./dist/assets/css/style-DEtV23hX.css" as="style">
+    <link rel="preload" href="./assets/css/mobile-responsive.css" as="style">
     <style>
     html{scroll-behavior:smooth;}
     body{overflow-x:hidden;}
@@ -127,6 +118,27 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
 <!-- END reCAPTCHA v3 -->
 
 <style id="divine-header-fix">
+  #site-loader {
+    display: none !important;
+    pointer-events: none !important;
+  }
+  .brand-clone {
+    display: none !important;
+  }
+  [data-transition-wrap] {
+    pointer-events: none !important;
+  }
+  .is-home-entrance .header-ronn__logo,
+  .is-home-entrance .header-ronn__nav-item,
+  .is-home-entrance .header-ronn__actions > *,
+  .header-ronn,
+  .header-ronn__main,
+  .header-ronn__logo,
+  .header-ronn__nav,
+  .header-ronn__actions {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
   .header-ronn {
     visibility: visible !important;
   }
@@ -306,14 +318,14 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
 </style>
 
 </head>
-<body class="home wp-singular page-template-default page page-id-7 wp-theme-divine-interiors is-home-entrance">
+<body class="home wp-singular page-template-default page page-id-7 wp-theme-divine-interiors">
 
 <!-- Google Tag Manager (noscript) -->
 
 <!-- End Google Tag Manager (noscript) -->
-<div id="site-loader" style="position:fixed;inset:0;z-index:210;background:#DBB6FC;pointer-events:none;" aria-hidden="true"></div>
+<div id="site-loader" style="display:none!important;" aria-hidden="true"></div>
 
-<div class="brand-clone" data-brand-clone aria-hidden="true" style="visibility:hidden;opacity:0;">
+<div class="brand-clone" data-brand-clone aria-hidden="true" style="display:none!important;">
     <svg width="116.408" height="50.0008" viewBox="0 0 116.408 50.0008" fill="none" xmlns="http://www.w3.org/2000/svg" class="di-brand-svg" style="overflow:visible;">
       <!-- Master Divine Interiors Logo: ALWAYS VISIBLE BY DEFAULT (guarantees logo never disappears on refresh) -->
       <image class="di-master-logo" data-anim-master="master" href="./assets/divine-logo-dark.png" x="0" y="0" width="116.408" height="50.0008" preserveAspectRatio="xMidYMid meet" />
@@ -354,7 +366,7 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
   </div>
 </div>
 
-<header class="header-ronn header-ronn--light" data-header-ronn>
+<header class="header-ronn header-ronn--light" data-header-ronn data-barba-prevent>
 
   <!-- Skip link (first focusable element; target #main-content exists on every template) -->
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -1639,7 +1651,7 @@ services</span></a>  </div>
 </div><!-- /data-barba="wrapper" -->
 
 
-<footer id="contact" class="footer-ronn" data-footer-ronn>
+<footer id="contact" class="footer-ronn" data-footer-ronn data-barba-prevent>
   <div class="footer-ronn__content">
 
     <!-- SECTION 1: Map -->
@@ -2044,59 +2056,22 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- Smooth Page Transition & Opening Orchestrator -->
+<!-- Instant UX & Transition Unlock Orchestrator -->
 <script>
 (function() {
-  document.addEventListener("DOMContentLoaded", function() {
-    const navLinks = document.querySelectorAll(
-      ".header-ronn__nav-link, .header-ronn__menu-link, .header-ronn__logo, .header-ronn__cta-btn, .header-ronn__menu-cta-btn, .footer-ronn__nav-col-link"
-    );
+  // Ensure loader and transition veil never block UI or clicks
+  var loader = document.getElementById("site-loader");
+  if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
 
-    navLinks.forEach(function(link) {
-      link.addEventListener("click", function(e) {
-        const href = link.getAttribute("href");
-        if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
-        
-        try {
-          const targetUrl = new URL(href, window.location.href);
-          if (targetUrl.origin === window.location.origin && targetUrl.pathname !== window.location.pathname) {
-            const wrap = document.querySelector("[data-transition-wrap]");
-            const panel = document.querySelector("[data-transition-panel]");
-            const logo = document.querySelector("[data-transition-logo]");
-            const topCurve = document.querySelector("[data-transition-panel-top]");
+  var wrap = document.querySelector("[data-transition-wrap]");
+  if (wrap) wrap.style.pointerEvents = "none";
 
-            if (wrap && panel && window.gsap) {
-              e.preventDefault();
-              const tl = window.gsap.timeline({
-                onComplete: function() {
-                  window.location.href = href;
-                }
-              });
-
-              tl.set(wrap, { pointerEvents: "all" })
-                .set(panel, { autoAlpha: 1, yPercent: 0 })
-                .set(topCurve, { scaleY: 0, height: "15vw" })
-                .set(logo, { opacity: 0 })
-                .to(panel, { yPercent: -100, duration: 0.75, ease: "power3.inOut" }, 0)
-                .to(topCurve, { scaleY: 1, duration: 0.75, ease: "power3.inOut" }, 0)
-                .to(logo, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.25);
-            }
-          }
-        } catch(err) {}
-      });
-    });
-
-    // Safe fallback if preloader is somehow lingering after 5 seconds
-    setTimeout(function() {
-      const loader = document.getElementById("site-loader");
-      if (loader) {
-        if (window.gsap) {
-          window.gsap.to(loader, { autoAlpha: 0, duration: 0.5, onComplete: function() { if (loader.parentNode) loader.parentNode.removeChild(loader); } });
-        } else {
-          loader.style.display = "none";
-        }
-      }
-    }, 5000);
+  // Immediate visibility failsafe: reveal all content instantly
+  document.querySelectorAll(".anim-hidden").forEach(function(el) {
+    el.classList.remove("anim-hidden");
+    el.style.visibility = "visible";
+    el.style.opacity = "1";
+    el.style.transform = "none";
   });
 })();
 </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="rs-js rs-preloader-seen">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,11 +7,27 @@
   <meta name="description" content="Let's talk about your project. Contact Divine Interiors for premium commercial, retail, and corporate turnkey interior architecture across India.">
   <link rel="icon" type="image/png" href="./assets/divine-interiors-logo.png">
 
+  <script>
+    document.documentElement.classList.add("rs-js");
+    document.documentElement.classList.add("rs-first-load");
+    document.documentElement.classList.add("rs-preloader-seen");
+    try { sessionStorage.setItem("rsPreloaderSeen", "1"); } catch(e) {}
+  </script>
+  <link rel="preload" href="./dist/assets/woff2/N27-Regular-BbgSAH5W.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./dist/assets/woff2/Gambetta-Regular-BShmYfa4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./dist/assets/woff2/Gambetta-Medium-DqscGjuk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./dist/assets/css/style-DEtV23hX.css" as="style">
+  <link rel="preload" href="./assets/css/mobile-responsive.css" as="style">
+
   <!-- Ronn Square Design System & Core Styles -->
   <link rel="stylesheet" href="./dist/assets/css/style-DEtV23hX.css">
   <link rel="stylesheet" href="./assets/css/mobile-responsive.css">
 
   <style>
+    #site-loader { display: none !important; pointer-events: none !important; }
+    .brand-clone { display: none !important; }
+    [data-transition-wrap] { pointer-events: none !important; }
+    .anim-hidden { opacity: 1 !important; visibility: visible !important; transform: none !important; }
     /* 1. Global Page Background & Canvas */
     html, body {
       background-color: var(--color-brand-sable, #FFEAD4) !important;
@@ -219,7 +235,7 @@
 <body class="wp-singular page-template-default page page-id-500 wp-theme-divine-interiors" style="background-color:#FFEAD4;">
 
   <!-- Transparent site loader anchor for GSAP gridReveal compatibility -->
-  <div id="site-loader" style="position:fixed;inset:0;z-index:210;background:transparent;pointer-events:none;" aria-hidden="true"></div>
+  <div id="site-loader" style="display:none!important;" aria-hidden="true"></div>
 
   <!-- Background Base Canvas -->
   <div class="site-bg" aria-hidden="true">
@@ -242,7 +258,7 @@
   </div>
 
   <!-- Header Navigation -->
-  <header class="header-ronn header-ronn--light" data-header-ronn>
+  <header class="header-ronn header-ronn--light" data-header-ronn data-barba-prevent>
 
     <!-- Skip link (first focusable element; target #main-content exists on every template) -->
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -592,7 +608,7 @@
 
   </div><!-- /data-barba="wrapper" -->
 
-<footer id="contact" class="footer-ronn" data-footer-ronn>
+<footer id="contact" class="footer-ronn" data-footer-ronn data-barba-prevent>
   <div class="footer-ronn__content">
 
     <!-- SECTION 1: Map -->
@@ -1178,18 +1194,16 @@
         });
       });
 
-      // Failsafe reveal for contact section on direct load
-      setTimeout(function() {
-        const sec = document.querySelector(".block-5-1-hero-contact");
-        if (sec) {
-          sec.querySelectorAll(".anim-hidden").forEach(function(el) {
-            el.classList.remove("anim-hidden");
-            el.style.opacity = "1";
-            el.style.visibility = "visible";
-            el.style.transform = "none";
-          });
-        }
-      }, 300);
+      // Failsafe reveal for contact section and transition unlock
+      var wrap = document.querySelector("[data-transition-wrap]");
+      if (wrap) wrap.style.pointerEvents = "none";
+
+      document.querySelectorAll(".anim-hidden").forEach(function(el) {
+        el.classList.remove("anim-hidden");
+        el.style.opacity = "1";
+        el.style.visibility = "visible";
+        el.style.transform = "none";
+      });
     });
   </script>
   <script src="./assets/js/mobile-interactions.js"></script>

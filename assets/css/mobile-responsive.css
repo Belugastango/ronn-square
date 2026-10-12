@@ -28,12 +28,16 @@ img, video, svg, canvas {
   height: auto;
 }
 
-/* Full screen coverage for first-load entrance preloader */
-body.is-home-entrance #site-loader {
-  z-index: 100001 !important;
+/* Instant Zero-Blocking: Ensure loader, clone, and transition never trap the viewport */
+#site-loader {
+  display: none !important;
+  pointer-events: none !important;
 }
-body.is-home-entrance .brand-clone {
-  z-index: 100002 !important;
+.brand-clone {
+  display: none !important;
+}
+[data-transition-wrap] {
+  pointer-events: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1145,14 +1149,12 @@ body.is-home-entrance .brand-clone {
 }
 
 /* --------------------------------------------------------------------------
-   13. Global Animation Failsafe
+   13. Global Animation Failsafe (Desktop & Mobile)
    -------------------------------------------------------------------------- */
-@media (max-width: 48em) {
-  body:not(.rs-js) .anim-hidden {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
+.anim-hidden {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
 
 @media (min-width: 48em) {

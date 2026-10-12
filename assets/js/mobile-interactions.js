@@ -6,6 +6,19 @@
   'use strict';
 
   function initMobile() {
+    // 0. Instant Failsafe: Ensure loader never blocks, transition is unlocked, content is visible
+    const loader = document.getElementById('site-loader');
+    if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+
+    const transWrap = document.querySelector('[data-transition-wrap]');
+    if (transWrap) transWrap.style.pointerEvents = 'none';
+
+    document.querySelectorAll('.anim-hidden').forEach(el => {
+      el.classList.remove('anim-hidden');
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    });
+
     // 1. Dynamic Viewport Height Fix (for iOS Safari address bar)
     function setAppHeight() {
       const vh = window.innerHeight * 0.01;
@@ -371,7 +384,6 @@
             statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }, 500);
-      });
       });
     }
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="rs-js rs-preloader-seen">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,18 +8,16 @@
 <link rel="icon" type="image/png" href="./assets/divine-favicon-apple.png">
 
 <script>
-  /* Once-per-session preloader gate */
   document.documentElement.classList.add("rs-js");
-  (function(){
-    try {
-      if (sessionStorage.getItem("rsPreloaderSeen")) {
-        document.documentElement.classList.add("rs-preloader-seen");
-      } else {
-        sessionStorage.setItem("rsPreloaderSeen", "1");
-      }
-    } catch(e) {}
-  })();
+  document.documentElement.classList.add("rs-first-load");
+  document.documentElement.classList.add("rs-preloader-seen");
+  try { sessionStorage.setItem("rsPreloaderSeen", "1"); } catch(e) {}
 </script>
+<link rel="preload" href="./dist/assets/woff2/N27-Regular-BbgSAH5W.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./dist/assets/woff2/Gambetta-Regular-BShmYfa4.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./dist/assets/woff2/Gambetta-Medium-DqscGjuk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./dist/assets/css/style-DEtV23hX.css" as="style">
+<link rel="preload" href="./assets/css/mobile-responsive.css" as="style">
 
 <style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
@@ -29,6 +27,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel="stylesheet" id="portfolio-gallery-grid-css" href="./assets/css/portfolio-gallery-grid.css" media="all" />
 
 <style>
+  #site-loader { display: none !important; pointer-events: none !important; }
+  .brand-clone { display: none !important; }
+  [data-transition-wrap] { pointer-events: none !important; }
+  .anim-hidden { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+
   /* Divine Interiors Header Logo System */
   .header-ronn__logo img {
     height: 38px;
@@ -165,7 +168,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </head>
 <body class="wp-singular page-template-default page page-id-829 wp-theme-divine-interiors">
 
-<div id="site-loader" style="position:fixed;inset:0;z-index:210;background:transparent;pointer-events:none;" aria-hidden="true"></div>
+<div id="site-loader" style="display:none!important;" aria-hidden="true"></div>
 
 <div class="site-bg" aria-hidden="true">
   <div class="site-bg__base"></div>
@@ -186,7 +189,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   </div>
 </div>
 
-<header class="header-ronn header-ronn--light" data-header-ronn>
+<header class="header-ronn header-ronn--light" data-header-ronn data-barba-prevent>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div class="header-ronn__cta-bar">
@@ -2598,7 +2601,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </main>
 </div><!-- /data-barba="wrapper" -->
 
-<footer id="contact" class="footer-ronn" data-footer-ronn>
+<footer id="contact" class="footer-ronn" data-footer-ronn data-barba-prevent>
   <div class="footer-ronn__content">
 
     <!-- SECTION 1: Map / Contact Header -->
@@ -2746,48 +2749,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <script id="rs-main-js" type="module" src="./dist/assets/js/main-C1SzXFGm.js"></script>
 
-<!-- Smooth Page Transition & Standalone Initializer -->
+<!-- Instant UX & Transition Unlock Orchestrator -->
 <script>
 (function() {
-  document.addEventListener("DOMContentLoaded", function() {
-    // Intercept top bar and navigation links for Osmo transition
-    const navLinks = document.querySelectorAll(
-      ".header-ronn__nav-link, .header-ronn__menu-link, .header-ronn__logo, .header-ronn__cta-btn, .header-ronn__menu-cta-btn, .footer-ronn__nav-col-link"
-    );
+  // Ensure loader and transition veil never block UI or clicks
+  var loader = document.getElementById("site-loader");
+  if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
 
-    navLinks.forEach(function(link) {
-      link.addEventListener("click", function(e) {
-        const href = link.getAttribute("href");
-        if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
-        
-        try {
-          const targetUrl = new URL(href, window.location.href);
-          if (targetUrl.origin === window.location.origin && targetUrl.pathname !== window.location.pathname) {
-            const wrap = document.querySelector("[data-transition-wrap]");
-            const panel = document.querySelector("[data-transition-panel]");
-            const logo = document.querySelector("[data-transition-logo]");
-            const topCurve = document.querySelector("[data-transition-panel-top]");
+  var wrap = document.querySelector("[data-transition-wrap]");
+  if (wrap) wrap.style.pointerEvents = "none";
 
-            if (wrap && panel && window.gsap) {
-              e.preventDefault();
-              const tl = window.gsap.timeline({
-                onComplete: function() {
-                  window.location.href = href;
-                }
-              });
-
-              tl.set(wrap, { pointerEvents: "all" })
-                .set(panel, { autoAlpha: 1, yPercent: 0 })
-                .set(topCurve, { scaleY: 0, height: "15vw" })
-                .set(logo, { opacity: 0 })
-                .to(panel, { yPercent: -100, duration: 0.75, ease: "power3.inOut" }, 0)
-                .to(topCurve, { scaleY: 1, duration: 0.75, ease: "power3.inOut" }, 0)
-                .to(logo, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.25);
-            }
-          }
-        } catch(err) {}
-      });
-    });
+  // Immediate visibility failsafe: reveal all content instantly
+  document.querySelectorAll(".anim-hidden").forEach(function(el) {
+    el.classList.remove("anim-hidden");
+    el.style.visibility = "visible";
+    el.style.opacity = "1";
+    el.style.transform = "none";
+  });
 
     // Failsafe reveal for hero and above-the-fold elements on direct non-Barba page loads
     setTimeout(function() {
@@ -2840,7 +2818,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       setTimeout(revealVisibleCards, 350);
       setTimeout(revealVisibleCards, 800);
     }, 400);
-  });
 })();
 </script>
 
