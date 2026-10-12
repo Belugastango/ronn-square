@@ -1,0 +1,149 @@
+/* ==========================================================================
+   DIVINE INTERIORS — STACKING PROJECT CARDS SCROLL EXPERIENCE
+   Award-winning sticky deck-of-cards animation on scroll
+   Full-screen width & bottom height, white logos with no background,
+   only logo and number (no other text), massive hero image filling the card
+   ========================================================================== */
+
+/* Allow sticky cards inside data-barba wrapper */
+[data-barba="wrapper"] {
+  overflow: visible !important;
+}
+
+.projects-stack-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(1rem, 2vw, 2.5rem) 0 clamp(4rem, 6vw, 8rem) 0;
+  background: var(--color-brand-sable, #FFEAD4);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.projects-stack-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 clamp(6px, 1.2vw, 18px);
+  box-sizing: border-box;
+}
+
+/* Individual Stacking Card - Full Screen Width & Extending to Bottom */
+.project-stack-card {
+  position: sticky;
+  top: clamp(65px, 8.5vh, 85px);
+  width: 100%;
+  height: calc(100vh - clamp(75px, 10vh, 95px));
+  min-height: calc(100vh - clamp(75px, 10vh, 95px));
+  border-radius: clamp(22px, 3vw, 36px);
+  padding: clamp(1.25rem, 2vw, 2rem) clamp(1.25rem, 3vw, 3rem) clamp(1.25rem, 2vw, 2rem);
+  margin-bottom: clamp(60px, 9vh, 120px);
+  box-sizing: border-box;
+  color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.28), 0 24px 60px rgba(0, 0, 0, 0.38);
+  transform-origin: top center;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, filter;
+  background: var(--card-bg, #20170a);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header Row: ONLY White Logo on Left, Giant Number on Right (NO Other Text) */
+.project-stack-card__header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+  flex-shrink: 0;
+}
+
+/* Logo Wrap: Transparent without any background */
+.project-stack-card__logo-wrap {
+  display: flex;
+  align-items: center;
+  height: clamp(38px, 5.5vh, 58px);
+  max-width: clamp(200px, 28vw, 380px);
+  background: none !important;
+}
+
+/* White Logo without background */
+.project-stack-card__brand-logo {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: none !important;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+  display: block;
+}
+
+/* Giant Index Number on the Right */
+.project-stack-card__num {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(3.2rem, 6.5vh, 5.6rem);
+  font-weight: 800;
+  line-height: 0.85;
+  color: #ffffff;
+  opacity: 0.95;
+  letter-spacing: -0.04em;
+  user-select: none;
+  flex-shrink: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Single Massive Hero Image Frame Filling Card Down to the Bottom */
+.project-stack-card__hero-frame {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: clamp(16px, 2.2vw, 24px);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  background: #111111;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-stack-card__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.project-stack-card:hover .project-stack-card__hero-img {
+  transform: scale(1.025);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .projects-stack-container {
+    padding: 0 clamp(4px, 1vw, 8px);
+  }
+  .project-stack-card {
+    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+    padding: 1.15rem 1rem 1.15rem;
+    top: 70px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+  }
+  .project-stack-card__logo-wrap {
+    height: 36px;
+    max-width: 180px;
+  }
+  .project-stack-card__num {
+    font-size: 2.8rem;
+  }
+}
