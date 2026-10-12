@@ -122,18 +122,15 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
     display: none !important;
     pointer-events: none !important;
   }
-  .brand-clone {
-    display: none !important;
-  }
   [data-transition-wrap] {
-    pointer-events: none !important;
+    pointer-events: none;
   }
-  .is-home-entrance .header-ronn__logo,
-  .is-home-entrance .header-ronn__nav-item,
-  .is-home-entrance .header-ronn__actions > *,
+  body.is-home-entrance .header-ronn__logo {
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
   .header-ronn,
   .header-ronn__main,
-  .header-ronn__logo,
   .header-ronn__nav,
   .header-ronn__actions {
     visibility: visible !important;
@@ -318,14 +315,14 @@ var wpml_cookies = {"wp-wpml_current_language":{"value":"fr","expires":1,"path":
 </style>
 
 </head>
-<body class="home wp-singular page-template-default page page-id-7 wp-theme-divine-interiors">
+<body class="home wp-singular page-template-default page page-id-7 wp-theme-divine-interiors is-home-entrance">
 
 <!-- Google Tag Manager (noscript) -->
 
 <!-- End Google Tag Manager (noscript) -->
 <div id="site-loader" style="display:none!important;" aria-hidden="true"></div>
 
-<div class="brand-clone" data-brand-clone aria-hidden="true" style="display:none!important;">
+<div class="brand-clone" data-brand-clone aria-hidden="true" style="visibility:hidden;opacity:0;">
     <svg width="116.408" height="50.0008" viewBox="0 0 116.408 50.0008" fill="none" xmlns="http://www.w3.org/2000/svg" class="di-brand-svg" style="overflow:visible;">
       <!-- Master Divine Interiors Logo: ALWAYS VISIBLE BY DEFAULT (guarantees logo never disappears on refresh) -->
       <image class="di-master-logo" data-anim-master="master" href="./assets/divine-logo-dark.png" x="0" y="0" width="116.408" height="50.0008" preserveAspectRatio="xMidYMid meet" />
@@ -2138,6 +2135,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+<script src="./assets/js/page-transitions.js"></script>
 <script src="./assets/js/mobile-interactions.js"></script>
 </body>
 </html>

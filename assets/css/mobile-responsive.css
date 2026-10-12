@@ -28,16 +28,29 @@ img, video, svg, canvas {
   height: auto;
 }
 
-/* Instant Zero-Blocking: Ensure loader, clone, and transition never trap the viewport */
+/* Instant Zero-Blocking: Ensure loader never traps the viewport */
 #site-loader {
   display: none !important;
   pointer-events: none !important;
 }
-.brand-clone {
-  display: none !important;
-}
 [data-transition-wrap] {
-  pointer-events: none !important;
+  pointer-events: none;
+}
+[data-transition-wrap][data-transition-active="true"],
+html.rs-page-transitioning [data-transition-wrap] {
+  pointer-events: all;
+}
+html.rs-page-transitioning [data-transition-panel] {
+  transform: translateY(-100%) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html.rs-page-transitioning [data-transition-panel-bottom] {
+  transform: scaleY(1) !important;
+  height: 20vw !important;
+}
+html.rs-page-transitioning [data-transition-logo] {
+  opacity: 1 !important;
 }
 
 /* --------------------------------------------------------------------------
