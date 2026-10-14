@@ -1321,8 +1321,11 @@ html.rs-page-transitioning [data-transition-logo] {
     max-width: 100% !important;
   }
 
-  .block-5-6-methode__subtitle,
   .block-5-6-methode__subtitle--pin {
+    display: none !important;
+  }
+
+  .block-5-6-methode__subtitle {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
@@ -1331,7 +1334,7 @@ html.rs-page-transitioning [data-transition-logo] {
     font-family: var(--font-secondary, serif) !important;
     font-size: 1.05rem !important;
     text-align: center !important;
-    margin-top: 1.5rem !important;
+    margin-top: 2rem !important;
   }
 
   .block-7-2-seo__media-inner,
