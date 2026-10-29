@@ -45,6 +45,18 @@
       indexInProject: i + 1,
       totalInProject: 8
     })),
+    // --- TAJ APARTMENT GAZIPUR (18 images) ---
+    ...Array.from({ length: 18 }, (_, i) => ({
+      id: `taj-apartment-gazipur-${i + 1}`,
+      projectSlug: "taj-apartment-gazipur",
+      title: "TAJ APARTMENT",
+      location: "Gazipur",
+      category: "RESIDENTIAL",
+      src: `./assets/portfolio_new/taj-apartment-gazipur_${String(i + 1).padStart(2, '0')}.jpg`,
+      alt: `Taj Apartment, Gazipur - Photo ${i + 1}`,
+      indexInProject: i + 1,
+      totalInProject: 18
+    })),
 
     // --- M3M LUXURY RESIDENCES (8 images) ---
     ...Array.from({ length: 8 }, (_, i) => ({
